@@ -214,7 +214,7 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 .mtile .mt-bot .kind{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .mtile .mt-bot .go{margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--paper)}
 .mtile .mt-bot .go .sq{width:5px;height:5px;background:var(--violet-2)}
-@media (max-width:760px){.mgrid{grid-template-columns:1fr}.mtile{aspect-ratio:16/10}}
+@media (max-width:760px){.mgrid{grid-template-columns:1fr}.mtile{aspect-ratio:16/10}.mtile img{object-position:50% 16%}}
 
 /* ---------- 05 GALERIA: sanfona de ponta a ponta, fundo violeta entre as fotos ---------- */
 .gal2{position:relative;display:flex;gap:4px;width:100%;height:clamp(360px,62vh,620px);background:var(--violet);overflow:hidden}
@@ -245,7 +245,7 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 .book-grid .lead p#book-t .hl{color:var(--violet-2)}
 .book-grid .lead p:not(#book-t){max-width:20ch}
 .contact{display:grid;gap:0}
-.contact div{display:grid;gap:2px;padding:8px 0;border-bottom:1px solid var(--line)}
+.contact div{display:grid;gap:2px;padding:8px 0}
 .contact dt{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
 .contact dd{margin:0;font-size:18px;font-family:var(--mono);user-select:all}
 .social-list{font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;display:grid;gap:10px;align-content:start}
@@ -255,7 +255,7 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 
 
 /* ---------- rodapé ---------- */
-footer{border-top:1px solid var(--line);padding-block:28px calc(28px + env(safe-area-inset-bottom,0px))}
+footer{border-top:1px solid var(--line);padding-block:18px calc(28px + env(safe-area-inset-bottom,0px))}
 footer .row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 footer img{height:14px;width:auto;opacity:.8}
 
@@ -425,22 +425,22 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
   <section class="panel" id="galeria" aria-labelledby="galeria-t" style="padding-top:0;padding-bottom:0">
     <div class="gx sec-label"><span class="t mn" id="galeria-t">Em cena — galeria</span><span class="rule"></span><span class="mark" aria-hidden="true"></span></div>
     <div class="gal2" id="gal">
-      <a href="#" aria-label="Ampliar foto 1 de 10"><span class="n mn">01</span><img src="img/IMG_7349.jpg" alt="Bárbara Thomaz de jaqueta de couro preta e óculos escuros"><span class="cap"><b>Take 01</b><span>Preto · Retrato</span></span></a>
-      <a href="#" aria-label="Ampliar foto 2 de 10"><span class="n mn">02</span><img src="img/IMG_7343.jpg" alt="Bárbara de macacão metálico prateado, óculos escuros"><span class="cap"><b>Take 02</b><span>Prateado · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 3 de 10"><span class="n mn">03</span><img src="img/IMG_7341.jpg" alt="Bárbara de vestido longo preto, mãos na cabeça" style="object-position:50% 10%"><span class="cap"><b>Take 03</b><span>Preto · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 4 de 10"><span class="n mn">04</span><img src="img/IMG_7330.jpg" alt="Bárbara de vestido metálico prateado"><span class="cap"><b>Take 04</b><span>Prateado · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 5 de 10"><span class="n mn">05</span><img src="img/IMG_7345.jpg" alt="Bárbara de jaqueta de couro e óculos vermelhos"><span class="cap"><b>Take 05</b><span>Preto · Retrato</span></span></a>
-      <a href="#" aria-label="Ampliar foto 6 de 10"><span class="n mn">06</span><img src="img/IMG_7346.jpg" alt="Bárbara de jaqueta de couro, ajustando os óculos escuros" style="object-position:50% 12%"><span class="cap"><b>Take 06</b><span>Preto · Retrato</span></span></a>
-      <a href="#" aria-label="Ampliar foto 7 de 10"><span class="n mn">07</span><img src="img/IMG_7350.jpg" alt="Bárbara de blazer preto e óculos vermelhos, braços cruzados"><span class="cap"><b>Take 07</b><span>Preto · Retrato</span></span></a>
-      <a href="#" aria-label="Ampliar foto 8 de 10"><span class="n mn">08</span><img src="img/IMG_7351.jpg" alt="Bárbara de vestido preto, mãos na cintura" style="object-position:50% 15%"><span class="cap"><b>Take 08</b><span>Preto · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 9 de 10"><span class="n mn">09</span><img src="img/IMG_7359.jpg" alt="Bárbara de vestido preto, mãos na cintura, outro ângulo" style="object-position:50% 12%"><span class="cap"><b>Take 09</b><span>Preto · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 10 de 10"><span class="n mn">10</span><img src="img/IMG_7344.jpg" alt="Bárbara de vestido preto"><span class="cap"><b>Take 10</b><span>Preto · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 1 de 10"><span class="n mn">01</span><img src="img/IMG_7349.jpg" alt="Bárbara Thomaz de jaqueta de couro preta e óculos escuros"><span class="cap"><b>Track 01</b><span>Preto · Retrato</span></span></a>
+      <a href="#" aria-label="Ampliar foto 2 de 10"><span class="n mn">02</span><img src="img/IMG_7343.jpg" alt="Bárbara de macacão metálico prateado, óculos escuros"><span class="cap"><b>Track 02</b><span>Prateado · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 3 de 10"><span class="n mn">03</span><img src="img/IMG_7341.jpg" alt="Bárbara de vestido longo preto, mãos na cabeça" style="object-position:50% 10%"><span class="cap"><b>Track 03</b><span>Preto · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 4 de 10"><span class="n mn">04</span><img src="img/IMG_7330.jpg" alt="Bárbara de vestido metálico prateado"><span class="cap"><b>Track 04</b><span>Prateado · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 5 de 10"><span class="n mn">05</span><img src="img/IMG_7345.jpg" alt="Bárbara de jaqueta de couro e óculos vermelhos"><span class="cap"><b>Track 05</b><span>Preto · Retrato</span></span></a>
+      <a href="#" aria-label="Ampliar foto 6 de 10"><span class="n mn">06</span><img src="img/IMG_7346.jpg" alt="Bárbara de jaqueta de couro, ajustando os óculos escuros" style="object-position:50% 12%"><span class="cap"><b>Track 06</b><span>Preto · Retrato</span></span></a>
+      <a href="#" aria-label="Ampliar foto 7 de 10"><span class="n mn">07</span><img src="img/IMG_7350.jpg" alt="Bárbara de blazer preto e óculos vermelhos, braços cruzados"><span class="cap"><b>Track 07</b><span>Preto · Retrato</span></span></a>
+      <a href="#" aria-label="Ampliar foto 8 de 10"><span class="n mn">08</span><img src="img/IMG_7351.jpg" alt="Bárbara de vestido preto, mãos na cintura" style="object-position:50% 15%"><span class="cap"><b>Track 08</b><span>Preto · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 9 de 10"><span class="n mn">09</span><img src="img/IMG_7359.jpg" alt="Bárbara de vestido preto, mãos na cintura, outro ângulo" style="object-position:50% 12%"><span class="cap"><b>Track 09</b><span>Preto · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 10 de 10"><span class="n mn">10</span><img src="img/IMG_7344.jpg" alt="Bárbara de vestido preto"><span class="cap"><b>Track 10</b><span>Preto · Produção</span></span></a>
     </div>
     <div class="gx"><div class="note"><b>Ref. galeria · v3</b>A grade tipo alvenaria não ficou boa — tirei ela. Agora é uma sanfona de ponta a ponta de verdade (sem container centralizado): as fotos ficam lado a lado, estreitas, com uma linha de violeta sólido entre elas; passar o mouse expande a foto e revela o nome, o resto encolhe. No celular (sem hover) vira uma fita que rola com parada em cada foto, já em cor plena. Clicar abre a mesma ampliação de sempre. Categoria por cor do look (preto/dourado/prateado) e por tipo de enquadramento (retrato/produção) — os dois lidos direto da própria foto, nada inventado. Tirei as duas fotos que já apareciam na abertura (de costas e cetim dourado de frente) — aqui fica só o que ainda não foi mostrado.</div></div>
   </section>
 
   <!-- 06 BOOKINGS -->
-  <section class="panel" id="bookings" aria-labelledby="book-t" style="padding-top:0">
+  <section class="panel" id="bookings" aria-labelledby="book-t" style="padding-top:0;padding-bottom:clamp(20px,3vw,32px)">
     <div class="gx">
       <div class="sec-label"><span class="t mn">Bookings e press kit</span><span class="rule"></span><span class="mark" aria-hidden="true"></span></div>
       <div class="book-grid">
@@ -541,7 +541,7 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
     else window.addEventListener('load',hide);
     setTimeout(hide,2200); // segurança: nunca prende a página por muito tempo
   })();
-  let on=true; try{ if(localStorage.getItem('bt-notes')==='0') on=false }catch(e){}
+  let on=false; try{ if(localStorage.getItem('bt-notes')==='1') on=true }catch(e){}
   const icons=t.querySelectorAll('i');
   const set=v=>{on=v;b.classList.toggle('notes',v);t.setAttribute('aria-pressed',v);icons[0].classList.toggle('on',v);icons[1].classList.toggle('on',!v);try{localStorage.setItem('bt-notes',v?'1':'0')}catch(e){}};
   set(on); t.addEventListener('click',()=>set(!on));
