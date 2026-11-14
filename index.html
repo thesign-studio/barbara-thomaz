@@ -139,9 +139,13 @@ section.panel{padding-block:clamp(48px,7vw,84px)}
 
 /* ---------- 03 SET EM DESTAQUE ---------- */
 .feature{position:relative;overflow:hidden;height:clamp(340px,46vh,460px);margin-top:clamp(20px,3vw,32px)}
-.feature .cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:66% 42%;transition:transform var(--dur-l) var(--ease);will-change:transform}
-.feature:hover .cover{transform:scale(1.025)}
+.feature .cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:66% 42%;transition:transform var(--dur-l) var(--ease);will-change:transform;animation:feature-breathe 14s ease-in-out infinite}
+.feature:hover .cover{transform:scale(1.07)}
 .feature::after{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(60% 70% at 50% 55%,rgba(0,0,0,.38),transparent 72%),linear-gradient(to top,rgba(0,0,0,.55),transparent 32%);pointer-events:none}
+.feature::before{content:"";position:absolute;inset:-20%;z-index:0;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,color-mix(in srgb,var(--violet) 22%,transparent) 90deg,transparent 180deg);animation:feature-sweep 16s linear infinite;mix-blend-mode:screen;pointer-events:none}
+@keyframes feature-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes feature-sweep{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.feature .cover{animation:none}.feature::before{animation:none;display:none}}
 .player{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;text-decoration:none}
 .player .tag{position:absolute;left:0;bottom:0;z-index:2;display:flex;justify-content:space-between;width:100%;padding:12px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 1px 4px rgba(0,0,0,.6)}
 .player .play{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:16px;font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-shadow:0 1px 4px rgba(0,0,0,.5)}
@@ -186,9 +190,15 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 .mtile{all:unset;cursor:pointer;position:relative;display:block;aspect-ratio:3/4;overflow:hidden;background:var(--ink-2)}
 .mtile:focus-visible{outline:1.5px solid var(--violet-2);outline-offset:-3px}
 .mtile img{width:100%;height:100%;object-fit:cover;filter:brightness(.72) contrast(1.05) saturate(1.1);transition:transform var(--dur-l) var(--ease),filter var(--dur-s) var(--ease);will-change:transform}
-.mtile:hover img{transform:scale(1.045);filter:brightness(.85) contrast(1) saturate(1.15)}
+.mtile:hover img{transform:scale(1.12);filter:brightness(.95) contrast(1.05) saturate(1.3)}
 .mtile::before{content:"";position:absolute;inset:0;background:color-mix(in srgb,var(--violet) 12%,transparent);mix-blend-mode:multiply;pointer-events:none;transition:opacity var(--dur-s) var(--ease)}
-.mtile:hover::before{opacity:.5}
+.mtile:hover::before{opacity:0}
+.mtile::after{content:"";position:absolute;inset:0;border:1px solid transparent;transition:border-color var(--dur-s) var(--ease);pointer-events:none;z-index:2}
+.mtile:hover::after{border-color:var(--violet-2)}
+.mtile .mt-bot{transition:transform var(--dur-s) var(--ease)}
+.mtile:hover .mt-bot{transform:translateY(-6px)}
+.mtile .mt-bot .go .sq{transition:transform var(--dur-q) var(--ease)}
+.mtile:hover .mt-bot .go .sq{transform:translateX(5px)}
 .mtile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,.05) 55%)}
 .mtile .mt-top{position:absolute;top:0;left:0;right:0;z-index:2;display:flex;justify-content:space-between;padding:14px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
 .mtile .mt-top .n{color:var(--violet-2)}
@@ -227,7 +237,8 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 }
 
 /* ---------- 06 BOOKINGS ---------- */
-.book-grid{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:clamp(24px,4vw,56px);margin-top:clamp(28px,4vw,44px)}
+.book-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(24px,4vw,56px);margin-top:clamp(28px,4vw,44px)}
+.book-grid .contact{margin-top:22px;max-width:260px}
 .book-grid .lead p{font-size:clamp(20px,2.4vw,30px);font-weight:500;line-height:1.3;max-width:20ch}
 .contact{display:grid;gap:0}
 .contact div{display:grid;gap:2px;padding:8px 0;border-bottom:1px solid var(--line)}
@@ -250,23 +261,29 @@ footer img{height:14px;width:auto;opacity:.8}
 body.notes .note{display:block}
 
 /* ---------- mini player fixo (toca o Spotify sem sair da página) ---------- */
-.player{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:56;display:grid;justify-items:end;gap:8px}
-.player__panel{width:min(360px,calc(100vw - 32px));background:var(--ink-2);border:1px solid var(--line);overflow:hidden}
-.player__panel iframe{display:block;border:0;width:100%;height:352px}
-.player__btn{all:unset;display:flex;align-items:center;gap:10px;padding:8px 18px 8px 8px;background:var(--paper);border-radius:999px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.45)}
-.player__icon{position:relative;width:34px;height:34px;border-radius:50%;background:var(--violet)}
-.player__icon::before{content:"";position:absolute;left:13px;top:11px;border-left:11px solid var(--paper);border-top:6px solid transparent;border-bottom:6px solid transparent}
-.player[data-open="true"] .player__icon::before{left:12px;top:11px;width:3px;height:12px;border:0;background:var(--paper);box-shadow:6px 0 0 var(--paper)}
-.player__eq{display:flex;align-items:flex-end;gap:2px;height:16px}
-.player__eq i{width:3px;height:3px;background:var(--violet)}
-.player[data-open="true"] .player__eq i{height:16px;animation:eqA .9s ease-in-out infinite}
-.player[data-open="true"] .player__eq i:nth-child(2){animation-name:eqB;animation-duration:1.25s;animation-delay:-.3s}
-.player[data-open="true"] .player__eq i:nth-child(3){animation-name:eqC;animation-duration:.7s;animation-delay:-.5s}
+.mplayer{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:56;display:grid;justify-items:end;gap:8px}
+.mplayer__panel{width:min(360px,calc(100vw - 32px));background:var(--ink-2);border:1px solid var(--line);overflow:hidden}
+.mplayer__panel iframe{display:block;border:0;width:100%;height:352px}
+.mplayer__btn{all:unset;display:flex;align-items:center;gap:10px;padding:8px 18px 8px 8px;background:var(--paper);border-radius:999px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.mplayer__icon{position:relative;width:34px;height:34px;border-radius:50%;background:var(--violet)}
+.mplayer__icon::before{content:"";position:absolute;left:13px;top:11px;border-left:11px solid var(--paper);border-top:6px solid transparent;border-bottom:6px solid transparent}
+.mplayer[data-open="true"] .mplayer__icon::before{left:12px;top:11px;width:3px;height:12px;border:0;background:var(--paper);box-shadow:6px 0 0 var(--paper)}
+.mplayer__eq{display:flex;align-items:flex-end;gap:2px;height:16px}
+.mplayer__eq i{width:3px;height:3px;background:var(--violet)}
+.mplayer[data-open="true"] .mplayer__eq i{height:16px;animation:eqA .9s ease-in-out infinite}
+.mplayer[data-open="true"] .mplayer__eq i:nth-child(2){animation-name:eqB;animation-duration:1.25s;animation-delay:-.3s}
+.mplayer[data-open="true"] .mplayer__eq i:nth-child(3){animation-name:eqC;animation-duration:.7s;animation-delay:-.5s}
 @keyframes eqA{0%{transform:scaleY(.2)}18%{transform:scaleY(1)}32%{transform:scaleY(.45)}50%{transform:scaleY(.85)}68%{transform:scaleY(.25)}84%{transform:scaleY(.7)}100%{transform:scaleY(.2)}}
 @keyframes eqB{0%{transform:scaleY(.6)}22%{transform:scaleY(.25)}40%{transform:scaleY(.95)}58%{transform:scaleY(.4)}76%{transform:scaleY(1)}100%{transform:scaleY(.6)}}
 @keyframes eqC{0%{transform:scaleY(.35)}25%{transform:scaleY(.8)}45%{transform:scaleY(.15)}70%{transform:scaleY(1)}100%{transform:scaleY(.35)}}
-.player__t{font:600 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
-@media (max-width:480px){.player__t{display:none}}
+.mplayer__t{font:600 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+@media (max-width:480px){.mplayer__t{display:none}}
+
+/* ---------- preloader rápido ---------- */
+#preloader{position:fixed;inset:0;z-index:999;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:opacity .45s var(--ease),visibility .45s var(--ease)}
+#preloader .mk{width:10px;height:10px;background:var(--violet-2);animation:pre-pulse 1s ease-in-out infinite}
+#preloader.is-done{opacity:0;visibility:hidden;pointer-events:none}
+@keyframes pre-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.4}}
 
 /* ---------- reveal ao rolar (aplicado via JS) ---------- */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity var(--dur-l) var(--ease),transform var(--dur-l) var(--ease)}
@@ -276,6 +293,7 @@ body.notes .note{display:block}
 </style>
 </head>
 <body>
+<div id="preloader" aria-hidden="true"><span class="mk"></span></div>
 <span id="topo" aria-hidden="true"></span>
 
 <a class="side-tab" href="https://open.spotify.com/artist/5Luy0WFYQ2JGezy5EyTBnx" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span><span>Ouvir</span></a>
@@ -402,7 +420,7 @@ body.notes .note{display:block}
   </section>
 
   <!-- 05 GALERIA -->
-  <section class="panel" id="galeria-sec" aria-labelledby="galeria-t" style="padding-top:0;padding-bottom:0">
+  <section class="panel" id="galeria" aria-labelledby="galeria-t" style="padding-top:0;padding-bottom:0">
     <div class="gx sec-label"><span class="t mn" id="galeria-t">Em cena — galeria</span><span class="rule"></span><span class="mark" aria-hidden="true"></span></div>
     <div class="gal2" id="gal">
       <a href="#" aria-label="Ampliar foto 1 de 10"><span class="n mn">01</span><img src="img/IMG_7349.jpg" alt="Bárbara Thomaz de jaqueta de couro preta e óculos escuros"><span class="cap"><b>Postura de estúdio</b><span>Preto · Retrato</span></span></a>
@@ -432,10 +450,10 @@ body.notes .note{display:block}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>Falar no WhatsApp</a>
             <a class="btn btn--line" href="https://drive.google.com/drive/folders/17zc0Qg9nRIW7BBWXx10rjM_WAhC-Uf4g" target="_blank" rel="noopener">Press kit</a>
           </div>
+          <dl class="contact reveal">
+            <div><dt>WhatsApp</dt><dd>(19) 98900-5660</dd></div>
+          </dl>
         </div>
-        <dl class="contact reveal">
-          <div><dt>WhatsApp</dt><dd>(19) 98900-5660</dd></div>
-        </dl>
         <nav class="social-list reveal" aria-label="Redes">
           <a href="https://www.instagram.com/bathomaz" target="_blank" rel="noopener">Instagram<span class="num">↗</span></a>
           <a href="https://open.spotify.com/artist/5Luy0WFYQ2JGezy5EyTBnx" target="_blank" rel="noopener">Spotify<span class="num">↗</span></a>
@@ -466,12 +484,12 @@ body.notes .note{display:block}
   </div>
 </dialog>
 
-<div class="player" data-open="false">
-  <div class="player__panel" id="player-panel" hidden></div>
-  <button class="player__btn" type="button" id="player-btn" aria-controls="player-panel" aria-expanded="false">
-    <span class="player__icon" aria-hidden="true"></span>
-    <span class="player__eq" aria-hidden="true"><i></i><i></i><i></i></span>
-    <span class="player__t">Ouvir no Spotify</span>
+<div class="mplayer" data-open="false">
+  <div class="mplayer__panel" id="mplayer-panel" hidden></div>
+  <button class="mplayer__btn" type="button" id="mplayer-btn" aria-controls="mplayer-panel" aria-expanded="false">
+    <span class="mplayer__icon" aria-hidden="true"></span>
+    <span class="mplayer__eq" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="mplayer__t">Ouvir no Spotify</span>
   </button>
 </div>
 
@@ -482,7 +500,8 @@ body.notes .note{display:block}
 
   // Entrada da abertura, GSAP. Se o script não carregar, os elementos já nascem visíveis (gsap.from
   // só esconde quando o tween é criado) — nenhum conteúdo fica escondido à espera de JS.
-  if (window.gsap){
+  function playHeroIntro(){
+    if (!window.gsap) return;
     const mm = gsap.matchMedia();
     mm.add('(prefers-reduced-motion: no-preference)', () => {
       const tl = gsap.timeline({defaults:{ease:'power3.out',duration:.62}});
@@ -492,6 +511,20 @@ body.notes .note{display:block}
       return () => tl.kill();
     });
   }
+
+  // Preloader: some rápido assim que a página carrega (com um mínimo pra não piscar),
+  // e só então toca a entrada do hero — o efeito acontece já visível, não escondido atrás dele.
+  (function(){
+    const pre=document.getElementById('preloader');
+    const start=Date.now();
+    function hide(){
+      const wait=Math.max(0,260-(Date.now()-start));
+      setTimeout(()=>{ pre.classList.add('is-done'); playHeroIntro(); setTimeout(()=>pre.remove(),480) },wait);
+    }
+    if(document.readyState==='complete') hide();
+    else window.addEventListener('load',hide);
+    setTimeout(hide,2200); // segurança: nunca prende a página por muito tempo
+  })();
   let on=true; try{ if(localStorage.getItem('bt-notes')==='0') on=false }catch(e){}
   const icons=t.querySelectorAll('i');
   const set=v=>{on=v;b.classList.toggle('notes',v);t.setAttribute('aria-pressed',v);icons[0].classList.toggle('on',v);icons[1].classList.toggle('on',!v);try{localStorage.setItem('bt-notes',v?'1':'0')}catch(e){}};
@@ -510,19 +543,19 @@ body.notes .note{display:block}
 
   // Mini player: carrega o embed do Spotify só no clique, sem sair da página
   const SPOTIFY='https://open.spotify.com/embed/artist/5Luy0WFYQ2JGezy5EyTBnx?utm_source=generator&theme=0';
-  const player=document.querySelector('.player'), panel=document.getElementById('player-panel'), pbtn=document.getElementById('player-btn');
-  pbtn.addEventListener('click',()=>{
-    const open=player.dataset.open==='true';
-    if(open){ player.dataset.open='false'; panel.hidden=true; pbtn.setAttribute('aria-expanded','false'); return }
-    if(!panel.firstChild){
+  const mplayer=document.querySelector('.mplayer'), mpanel=document.getElementById('mplayer-panel'), mpbtn=document.getElementById('mplayer-btn');
+  mpbtn.addEventListener('click',()=>{
+    const open=mplayer.dataset.open==='true';
+    if(open){ mplayer.dataset.open='false'; mpanel.hidden=true; mpbtn.setAttribute('aria-expanded','false'); return }
+    if(!mpanel.firstChild){
       const f=document.createElement('iframe');
       f.src=SPOTIFY; f.title='Bárbara Thomaz no Spotify'; f.loading='lazy';
       f.allow='clipboard-write; encrypted-media; fullscreen; picture-in-picture';
-      panel.appendChild(f);
+      mpanel.appendChild(f);
     }
-    panel.hidden=false; player.dataset.open='true'; pbtn.setAttribute('aria-expanded','true');
+    mpanel.hidden=false; mplayer.dataset.open='true'; mpbtn.setAttribute('aria-expanded','true');
   });
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&player.dataset.open==='true')pbtn.click()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mplayer.dataset.open==='true')mpbtn.click()});
 
   // Reveal ao rolar (cards de música entram da esquerda; demais sobem com fade)
   if('IntersectionObserver' in window){
