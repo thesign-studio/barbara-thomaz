@@ -138,7 +138,11 @@ section.panel{padding-block:clamp(48px,7vw,84px)}
 .player .play i{width:46px;height:46px;border:1px solid var(--paper);border-radius:50%;display:grid;place-items:center;transition:background .3s,color .3s}
 .player:hover .play i{background:var(--paper);color:var(--ink)}
 .player .play svg{width:14px;height:14px;margin-left:2px}
-.feature-info{background:var(--ink-2);padding:clamp(22px,3vw,36px);display:grid;align-content:space-between;gap:20px}
+.feature-info{background:var(--ink-2);padding:clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:24px}
+.date-call{flex:1;display:flex;flex-direction:column;justify-content:center;gap:12px;border-block:1px solid var(--line);padding-block:clamp(20px,4vw,40px)}
+.date-call .eyebrow{color:var(--mute)}
+.date-call .date-big{font-family:var(--round);font-weight:900;font-style:normal;font-size:clamp(30px,4vw,54px);line-height:1;color:var(--violet-2);text-transform:uppercase;letter-spacing:-.01em}
+.date-call .btn{align-self:flex-start;margin-top:4px}
 .facts{display:grid;gap:0}
 .facts div{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase}
 .facts dt{color:var(--mute)}
@@ -359,13 +363,17 @@ body.notes .note{display:block}
         <div class="feature-info">
           <dl class="facts">
             <div><dt>Local</dt><dd>New York Pub</dd></div>
-            <div><dt>Data</dt><dd class="pend">a confirmar</dd></div>
             <div><dt>Formato</dt><dd>B2B</dd></div>
           </dl>
+          <div class="date-call">
+            <p class="eyebrow">Data da apresentação</p>
+            <p class="date-big">A confirmar</p>
+            <a class="btn btn--line" href="#bookings">Falar sobre uma data</a>
+          </div>
           <p style="font-size:13px;color:var(--mute);line-height:1.6">Um registro ao vivo da pista. O link abre direto no YouTube — nada carrega junto com a página.</p>
         </div>
       </div>
-      <div class="gx"><div class="note"><b>Ref. set</b>Depois da troca de ordem, esta seção passou a vir logo após "Música" — o player continua de ponta a ponta (sem a margem lateral), pra não voltar a flutuar como um cartão solto. Mesma lógica da capa de editorial da referência: imagem grande à esquerda com legenda sobreposta, coluna de dados à direita. A foto é provisória — trocar pelo frame real do vídeo assim que tivermos. Se um set solo for aprovado, ele assume este lugar.</div></div>
+      <div class="gx"><div class="note"><b>Ref. set</b>O painel da direita ficava com um vão vazio no meio (a foto é alta, então a coluna de dados esticava junto) — agora esse espaço virou um destaque grande pra data, com botão direto pra falar sobre uma apresentação, em vez de ficar perdido. O player continua de ponta a ponta, sem voltar a flutuar como cartão solto. A foto é provisória — trocar pelo frame real do vídeo assim que tivermos. Se um set solo for aprovado, ele assume este lugar.</div></div>
   </section>
 
   <!-- 05 GALERIA -->
