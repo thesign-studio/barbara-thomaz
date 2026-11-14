@@ -78,9 +78,6 @@ p{margin:0}
 .top nav a:hover{opacity:1}
 .top nav a:hover::after{right:0}
 .top .status{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);text-align:right;white-space:nowrap}
-.toggle{all:unset;display:flex;gap:4px;cursor:pointer;align-items:center}
-.toggle i{width:8px;height:8px;border:1px solid var(--paper)}
-.toggle i.on{background:var(--paper)}
 @media (max-width:760px){.top nav a:not(.b){display:none}}
 
 /* ---------- 01 HERO: grade de 3 fotos desiguais ---------- */
@@ -236,6 +233,9 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
   .gal2 a{flex:0 0 78%;scroll-snap-align:start}
   .gal2 a img{filter:none}
   .gal2 a .cap{opacity:1;transform:none}
+  .gal2 a::before{content:"";position:absolute;inset:0;z-index:1;background:#6e1026;mix-blend-mode:color;opacity:0;transition:opacity .25s var(--ease);pointer-events:none}
+  .gal2 a:active::before{opacity:.85}
+  .gal2 a:active img{transform:scale(1.04)}
 }
 
 /* ---------- 06 BOOKINGS ---------- */
@@ -258,11 +258,6 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 footer{border-top:1px solid var(--line);padding-block:18px calc(28px + env(safe-area-inset-bottom,0px))}
 footer .row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 footer img{height:14px;width:auto;opacity:.8}
-
-/* ---------- notas de direção ---------- */
-.note{display:none;margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);font-family:var(--body);font-size:12.5px;line-height:1.55;color:var(--violet-2)}
-.note b{font-family:var(--mono);font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:4px;color:var(--paper)}
-body.notes .note{display:block}
 
 /* ---------- mini player: embed do Spotify abrindo do lado da aba "Ouvir" ---------- */
 .mplayer__panel{order:-1;width:min(300px,calc(100vw - 96px));background:var(--ink-2);border:1px solid var(--line);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.45)}
@@ -315,9 +310,6 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
           <a href="#galeria">Galeria</a>
           <a href="#bookings" class="b">Bookings</a>
         </nav>
-        <button class="toggle" id="toggle" aria-pressed="true" aria-label="Mostrar ou esconder notas de direção">
-          <i class="on" aria-hidden="true"></i><i aria-hidden="true"></i>
-        </button>
       </div>
     </header>
 
@@ -354,7 +346,6 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
     </div>
   </section>
 
-  <div class="gx"><div class="note"><b>Ref. abertura · Offform (talent agency)</b>Grade de 3 fotos de sangria total no lugar de uma única foto com moldura. O menu fica sobreposto direto na imagem, sem barra própria. A linha com "2026" e as categorias (clicáveis, levam às seções) substitui o texto de status solto. Canto inferior direito ganhou uma lista numerada, como a "01 WOMEN / 02 MEN" da referência.</div></div>
 
   <!-- 02 SOBRE -->
   <section class="panel" id="sobre" aria-labelledby="sobre-t" style="padding-top:clamp(22px,3.4vw,34px);padding-bottom:clamp(18px,2.6vw,28px)">
@@ -377,7 +368,6 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
           <div><span class="num mn">04</span><span>Data da apresentação · <span class="pend">a confirmar</span></span></div>
         </div>
       </div>
-      <div class="note"><b>Ref. sobre</b>Três colunas iguais à seção "ABOUT" da referência: uma frase curta de abertura, o corpo do texto no meio, uma lista numerada do que ela oferece à direita. A foto de IMG_7346 saiu daqui por enquanto (estava solta, quebrando a sequência) — fica pendente decidir onde ela entra. Texto do briefing, ainda para aprovação da Bárbara.</div>
     </div>
   </section>
 
@@ -402,7 +392,6 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
           <span class="mt-bot"><b>Canal<br>Bárbara Thomaz</b><span class="kind">Sets e vídeos</span><span class="go">Assistir<span class="sq" aria-hidden="true"></span></span></span>
         </a>
       </div>
-      <div class="note"><b>Ref. música</b>Subiu para logo depois de "Sobre", no lugar onde estava o "Set em destaque" (a pedido do Guto). Cada item é um quadro com foto de estúdio no fundo, no mesmo estilo da galeria — no lugar da lista de texto ou de widgets incorporados (o site atual carrega o player do Spotify, um vídeo do YouTube e o widget do SoundCloud lado a lado, cada um com a cara da própria plataforma). Nenhum player de terceiro carrega aqui — o clique abre a plataforma. "Who Is Bárbara" segue como playlist até confirmarmos o que é.</div>
     </div>
   </section>
 
@@ -418,7 +407,6 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
           <span class="tag mn"><span>B2B Lerock's × Bárbara Thomaz</span><span>YouTube</span></span>
         </a>
       </div>
-      <div class="gx"><div class="note"><b>Ref. set</b>Tirado o painel de dados (Local, Formato, Data, o textinho de descrição) — ficou só a capa com "Assistir no YouTube" no meio, mais limpo. A data da apresentação foi pra seção "Sobre", perto da lista numerada. Ainda não é o frame real do vídeo (é uma capa, não uma miniatura do YouTube). Se um set solo for aprovado, ele assume este lugar.</div></div>
   </section>
 
   <!-- 05 GALERIA -->
@@ -436,7 +424,6 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
       <a href="#" aria-label="Ampliar foto 9 de 10"><span class="n mn">09</span><img src="img/IMG_7359.jpg" alt="Bárbara de vestido preto, mãos na cintura, outro ângulo" style="object-position:50% 12%"><span class="cap"><b>Track 09</b><span>Preto · Produção</span></span></a>
       <a href="#" aria-label="Ampliar foto 10 de 10"><span class="n mn">10</span><img src="img/IMG_7344.jpg" alt="Bárbara de vestido preto"><span class="cap"><b>Track 10</b><span>Preto · Produção</span></span></a>
     </div>
-    <div class="gx"><div class="note"><b>Ref. galeria · v3</b>A grade tipo alvenaria não ficou boa — tirei ela. Agora é uma sanfona de ponta a ponta de verdade (sem container centralizado): as fotos ficam lado a lado, estreitas, com uma linha de violeta sólido entre elas; passar o mouse expande a foto e revela o nome, o resto encolhe. No celular (sem hover) vira uma fita que rola com parada em cada foto, já em cor plena. Clicar abre a mesma ampliação de sempre. Categoria por cor do look (preto/dourado/prateado) e por tipo de enquadramento (retrato/produção) — os dois lidos direto da própria foto, nada inventado. Tirei as duas fotos que já apareciam na abertura (de costas e cetim dourado de frente) — aqui fica só o que ainda não foi mostrado.</div></div>
   </section>
 
   <!-- 06 BOOKINGS -->
@@ -463,7 +450,6 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
           <a href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener">YouTube<span class="num">↗</span></a>
         </nav>
       </div>
-      <div class="note"><b>Ref. bookings</b>Mesma grade de 3 colunas da seção "Sobre", agora para contato: a chamada, os dados e as redes lado a lado — no lugar de empilhar tudo numa faixa só. O WhatsApp vem do site atual (lá o link está sem o 55; aqui já corrigido).</div>
     </div>
   </section>
 </main>
@@ -492,7 +478,6 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
 <script>
 (function(){
-  const b=document.body, t=document.getElementById('toggle');
   const hasGsap=!!window.gsap, hasST=hasGsap&&!!window.ScrollTrigger, hasSplit=hasGsap&&!!window.SplitText, hasScrollTo=hasGsap&&!!window.ScrollToPlugin;
   if (hasGsap) gsap.registerPlugin(...[window.ScrollTrigger,window.ScrollToPlugin,window.SplitText].filter(Boolean));
 
@@ -541,11 +526,6 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
     else window.addEventListener('load',hide);
     setTimeout(hide,2200); // segurança: nunca prende a página por muito tempo
   })();
-  let on=false; try{ if(localStorage.getItem('bt-notes')==='1') on=true }catch(e){}
-  const icons=t.querySelectorAll('i');
-  const set=v=>{on=v;b.classList.toggle('notes',v);t.setAttribute('aria-pressed',v);icons[0].classList.toggle('on',v);icons[1].classList.toggle('on',!v);try{localStorage.setItem('bt-notes',v?'1':'0')}catch(e){}};
-  set(on); t.addEventListener('click',()=>set(!on));
-
   const links=[...document.querySelectorAll('#gal a')], dlg=document.getElementById('lb'), im=document.getElementById('lb-img'), cnt=document.getElementById('lb-count');
   let i=0, last=null;
   const show=k=>{i=(k+links.length)%links.length;const s=links[i].querySelector('img');im.src=s.src;im.alt=s.alt;cnt.textContent=(i+1)+' / '+links.length};
@@ -591,8 +571,10 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
   if (hasST){
     gsap.to('#scrollbar', {width:'100%', ease:'none', scrollTrigger:{trigger:document.body, start:'top top', end:'bottom bottom', scrub:true}});
     gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
-      const px = gsap.to('.hgrid img', {y:()=>window.innerHeight*0.1, scale:1.08, ease:'none',
-        scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+      const px = gsap.to('.hgrid img', {
+        y:()=>document.querySelector('.hgrid').offsetHeight*.08,
+        scale:1.18, ease:'none',
+        scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:.3}});
       return () => px.scrollTrigger && px.scrollTrigger.kill();
     });
   } else {
@@ -604,7 +586,7 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
       const h=document.documentElement;
       const max=h.scrollHeight-h.clientHeight;
       bar.style.width=(max>0?(h.scrollTop/max)*100:0)+'%';
-      if(!reduceMotion && h.scrollTop<900) heroImgs.forEach(img=>{img.style.transform=`scale(1.08) translateY(${h.scrollTop*0.06}px)`});
+      if(!reduceMotion && h.scrollTop<900) heroImgs.forEach(img=>{img.style.transform=`scale(1.18) translateY(${h.scrollTop*0.08}px)`});
       ticking=false;
     }
     window.addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(onScroll); ticking=true } },{passive:true});
