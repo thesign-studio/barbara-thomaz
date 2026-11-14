@@ -205,7 +205,8 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 .mtile .mt-top .n{color:var(--violet-2)}
 .mtile .mt-top .plat{color:var(--paper);opacity:.75}
 .mtile .mt-bot{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:18px 16px}
-.mtile .mt-bot b{display:block;font-family:var(--body);font-weight:800;letter-spacing:-.015em;text-transform:uppercase;font-size:clamp(28px,4.6vw,48px);line-height:.98;color:var(--paper);margin-bottom:8px}
+.mtile .mt-bot b{display:block;font-family:var(--body);font-weight:800;letter-spacing:-.015em;text-transform:uppercase;font-size:clamp(28px,4.6vw,48px);line-height:.98;color:var(--paper);margin-bottom:8px;transition:color var(--dur-s) var(--ease)}
+.mtile:hover .mt-bot b{color:var(--violet-2)}
 .mtile{opacity:0;transform:translateX(-32px);transition:opacity var(--dur-l) var(--ease),transform var(--dur-l) var(--ease)}
 .mtile.is-in{opacity:1;transform:translateX(0)}
 .mgrid a:nth-child(2).is-in{transition-delay:.1s}
@@ -322,8 +323,8 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
 
     <div class="hgrid">
       <figure class="c1"><img src="img/IMG_7349.jpg" alt="Retrato de Bárbara Thomaz de jaqueta de couro preta e óculos escuros, em fundo cinza de estúdio" width="768" height="1151" fetchpriority="high"></figure>
-      <figure class="c2"><img src="img/IMG_7490.jpg" alt="" aria-hidden="true" width="1100" height="1648" loading="lazy"></figure>
-      <figure class="c3"><img src="img/IMG_7496.jpg" alt="" aria-hidden="true" width="1100" height="1648" loading="lazy"></figure>
+      <figure class="c2"><img src="img/IMG_7490.jpg" alt="" aria-hidden="true" width="1100" height="1648" fetchpriority="high"></figure>
+      <figure class="c3"><img src="img/IMG_7496.jpg" alt="" aria-hidden="true" width="1100" height="1648" fetchpriority="high"></figure>
     </div>
 
     <div class="hero-divider">
@@ -518,18 +519,24 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
     mm.add('(prefers-reduced-motion: reduce)', () => { els.forEach(el=>el.style.opacity=1) });
   }
 
-  // Preloader: some rápido assim que a página carrega (com um mínimo pra não piscar),
-  // e só então toca a entrada do hero — o efeito acontece já visível, não escondido atrás dele.
+  // Preloader: some rápido assim que a página (e as 3 fotos do topo, já DECODIFICADAS, não só
+  // baixadas) carregam, com um mínimo pra não piscar — e só então toca a entrada do hero, pra não
+  // estourar a foto na tela depois que o efeito já tinha "terminado".
   (function(){
     const pre=document.getElementById('preloader');
     const start=Date.now();
+    let done=false;
     function hide(){
+      if(done) return; done=true;
       const wait=Math.max(0,700-(Date.now()-start));
       setTimeout(()=>{
         pre.classList.add('is-done');
         setTimeout(()=>{ pre.remove(); playHeroIntro() },480);
       },wait);
     }
+    const heroImgs=[...document.querySelectorAll('.hgrid img')];
+    const decodes=heroImgs.map(img=>img.decode?img.decode().catch(()=>{}):Promise.resolve());
+    Promise.all(decodes).then(hide);
     if(document.readyState==='complete') hide();
     else window.addEventListener('load',hide);
     setTimeout(hide,2200); // segurança: nunca prende a página por muito tempo
