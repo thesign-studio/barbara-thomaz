@@ -181,12 +181,9 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 .mgrid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(24px,4vw,40px)}
 .mtile{all:unset;cursor:pointer;position:relative;display:block;aspect-ratio:3/4;overflow:hidden;background:var(--ink-2)}
 .mtile:focus-visible{outline:1.5px solid var(--violet-2);outline-offset:-3px}
-.mtile img{width:100%;height:100%;object-fit:cover;filter:grayscale(.5) brightness(.55) contrast(1.05);transition:transform var(--dur-l) var(--ease),filter var(--dur-s) var(--ease);will-change:transform}
-.mtile:hover img{transform:scale(1.045);filter:grayscale(.1) brightness(.68)}
-.mtile::before{content:"";position:absolute;inset:0;background:color-mix(in srgb,var(--violet) 30%,transparent);mix-blend-mode:multiply;pointer-events:none;transition:opacity var(--dur-s) var(--ease)}
-.mgrid a:nth-child(1)::before{background:color-mix(in srgb,#2ED573 26%,var(--violet) 74%)}
-.mgrid a:nth-child(2)::before{background:color-mix(in srgb,#FF7A33 26%,var(--violet) 74%)}
-.mgrid a:nth-child(3)::before{background:color-mix(in srgb,#FF3B3B 22%,var(--violet) 78%)}
+.mtile img{width:100%;height:100%;object-fit:cover;filter:brightness(.72) contrast(1.05) saturate(1.1);transition:transform var(--dur-l) var(--ease),filter var(--dur-s) var(--ease);will-change:transform}
+.mtile:hover img{transform:scale(1.045);filter:brightness(.85) contrast(1) saturate(1.15)}
+.mtile::before{content:"";position:absolute;inset:0;background:color-mix(in srgb,var(--violet) 12%,transparent);mix-blend-mode:multiply;pointer-events:none;transition:opacity var(--dur-s) var(--ease)}
 .mtile:hover::before{opacity:.5}
 .mtile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,.05) 55%)}
 .mtile .mt-top{position:absolute;top:0;left:0;right:0;z-index:2;display:flex;justify-content:space-between;padding:14px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
@@ -338,17 +335,17 @@ body.notes .note{display:block}
       <div class="sec-label"><span class="t mn" id="musica-t">Música — sets e lançamentos</span><span class="rule"></span><span class="mark" aria-hidden="true"></span></div>
       <div class="mgrid">
         <a class="mtile" href="https://open.spotify.com/artist/5Luy0WFYQ2JGezy5EyTBnx" target="_blank" rel="noopener">
-          <img src="img/IMG_7330.jpg" alt="" aria-hidden="true" loading="lazy" width="1100" height="1648">
+          <img src="img/music-spotify.webp" alt="" aria-hidden="true" loading="lazy" width="1086" height="1448">
           <span class="mt-top"><span class="n mn">01</span><span class="plat">Spotify</span></span>
           <span class="mt-bot"><b>Bárbara Thomaz</b><span class="kind">Perfil de artista</span><span class="go">Ouvir<span class="sq" aria-hidden="true"></span></span></span>
         </a>
         <a class="mtile" href="https://soundcloud.com/dj-barbara-thomaz/sets/who-is-barbara" target="_blank" rel="noopener">
-          <img src="img/IMG_7351.jpg" alt="" aria-hidden="true" loading="lazy" width="768" height="1151" style="object-position:50% 15%">
+          <img src="img/music-soundcloud.webp" alt="" aria-hidden="true" loading="lazy" width="1086" height="1448">
           <span class="mt-top"><span class="n mn">02</span><span class="plat">SoundCloud</span></span>
           <span class="mt-bot"><b>Who Is Bárbara</b><span class="kind">Playlist</span><span class="go">Ouvir<span class="sq" aria-hidden="true"></span></span></span>
         </a>
         <a class="mtile" href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener">
-          <img src="img/IMG_7346.jpg" alt="" aria-hidden="true" loading="lazy" width="768" height="1151" style="object-position:50% 12%">
+          <img src="img/music-youtube.webp" alt="" aria-hidden="true" loading="lazy" width="1086" height="1448">
           <span class="mt-top"><span class="n mn">03</span><span class="plat">YouTube</span></span>
           <span class="mt-bot"><b>Canal Bárbara Thomaz</b><span class="kind">Sets e vídeos</span><span class="go">Assistir<span class="sq" aria-hidden="true"></span></span></span>
         </a>
