@@ -8,7 +8,7 @@
 <meta name="description" content="Bárbara Thomaz, DJ de Melodic Techno — música, sets e bookings.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Unbounded:wght@700;800;900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: painéis colados, sem respiro entre seções — tipografia enorme fazendo o papel do grafismo, uma faixa corrida no topo e uma fita de fotos, na linha do lerocks. Tema único escuro, violeta como cor-bandeira em vez de luz difusa. */
 :root{
@@ -20,6 +20,7 @@
   --violet-2:#9B5DE5;
   --lav:#C9B8E8;
   --display:"Archivo","Arial Narrow",Helvetica,sans-serif;
+  --round:"Unbounded","Archivo",Helvetica,sans-serif;
   --body:"Instrument Sans","Segoe UI",Helvetica,Arial,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
   --gut:max(20px,env(safe-area-inset-left,0px));
@@ -38,7 +39,7 @@ img{display:block;max-width:100%;height:auto}
 
 /* ---------- tipografia ---------- */
 .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--lav)}
-.giant{font-family:var(--display);font-stretch:70%;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:.88;margin:0;text-wrap:balance}
+.giant{font-family:var(--round);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:.92;margin:0;text-wrap:balance}
 p{margin:0}
 .muted{color:var(--mute)}
 
@@ -112,7 +113,7 @@ p{margin:0}
 
 /* ---------- cabeçalhos de seção, colados (sem gap embaixo) ---------- */
 .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:18px;border-bottom:2px solid var(--paper);min-width:0}
-.sec-head .giant{font-size:clamp(28px,5vw,46px);min-width:0;flex:1 1 auto}
+.sec-head .giant{font-size:clamp(24px,4.4vw,42px);min-width:0;flex:1 1 auto}
 .sec-head .eyebrow{flex:0 0 auto}
 
 /* ---------- 03 sobre ---------- */
@@ -132,7 +133,7 @@ p{margin:0}
 .track{display:block;border-bottom:1px solid var(--ink-2);padding:clamp(14px,2.4vw,22px) 0;text-decoration:none;position:relative;overflow:hidden}
 .track-row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:baseline;gap:14px;min-width:0}
 .track-row span.n{font-family:var(--mono);font-size:13px;color:var(--violet-2)}
-.track-title{font-family:var(--display);font-stretch:78%;font-weight:800;text-transform:uppercase;letter-spacing:-.005em;font-size:clamp(28px,6vw,64px);line-height:1;color:color-mix(in srgb,var(--paper) 55%,transparent);transition:color .3s,transform .4s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.track-title{font-family:var(--round);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;font-size:clamp(20px,4.6vw,46px);line-height:1;color:color-mix(in srgb,var(--paper) 55%,transparent);transition:color .3s,transform .4s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .track:hover .track-title{color:var(--paper);transform:translateX(6px)}
 .track-tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
 .track-meta{display:flex;justify-content:space-between;padding-left:58px;padding-top:4px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
@@ -156,7 +157,7 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 
 /* ---------- 06 bookings: faixa violeta cheia ---------- */
 .book{background:var(--violet);color:var(--ink)}
-.book .giant{font-size:clamp(40px,8vw,104px);color:var(--ink)}
+.book .giant{font-size:clamp(34px,6.6vw,88px);color:var(--ink)}
 .book-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,56px);align-items:end;padding-block:clamp(32px,6vw,64px)}
 .book-lead{font-size:clamp(16px,1.6vw,19px);max-width:46ch;color:color-mix(in srgb,var(--ink) 80%,transparent)}
 .book .btn--solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
@@ -243,7 +244,7 @@ body.notes .note{display:block}
         </div>
       </div>
     </div>
-    <div class="gx"><div class="note"><b>Ref. abertura · Lerock's</b>Foto de sangria total (sem moldura, sem card) e a logo colada por cima, sobrepondo a borda da foto — igual ao wordmark do Lerock's sobre o ombro dele. A faixa corrida no topo (marquee) substitui o texto de status solto. Tudo toca: a foto encosta direto na barra preta de baixo, sem respiro entre os blocos.</div></div>
+    <div class="gx"><div class="note"><b>Ref. abertura · Lerock's + Paradigm Festival</b>Foto de sangria total e a logo original (sem redesenho, sem letreiro novo) colada por cima, sobrepondo a borda da foto — igual ao wordmark do Lerock's sobre o ombro dele. Os títulos das próximas seções passam a usar uma tipografia bold e arredondada (Unbounded), na linha do "PARADIGM FESTIVAL". A faixa corrida no topo (marquee) substitui o texto de status solto. Tudo toca: a foto encosta direto na barra preta de baixo, sem respiro entre os blocos.</div></div>
   </section>
 
   <!-- 02 SET EM DESTAQUE -->
