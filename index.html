@@ -55,7 +55,7 @@ p{margin:0}
 .sec-label .mark{width:6px;height:6px;background:var(--violet-2);flex:none}
 
 /* ---------- botões ---------- */
-.btn{display:inline-flex;align-items:center;gap:.7em;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:13px 20px;border:1px solid var(--paper);min-height:44px;transition:background var(--dur-q) var(--ease),color var(--dur-q) var(--ease),border-color var(--dur-q) var(--ease),transform var(--dur-q) var(--ease)}
+.btn{display:inline-flex;align-items:center;gap:.7em;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:13px 20px;border:1px solid var(--paper);min-height:44px;transition:background var(--dur-q) var(--ease),color var(--dur-q) var(--ease),border-color var(--dur-q) var(--ease),transform var(--dur-q) var(--ease);will-change:transform}
 .btn:hover{transform:translateY(-1px)}
 .btn:active{transform:translateY(0) scale(.97);transition-duration:80ms}
 .btn--solid{background:var(--paper);color:var(--ink)}
@@ -140,7 +140,7 @@ section.panel{padding-block:clamp(48px,7vw,84px)}
 .player .tag{position:absolute;left:0;bottom:0;z-index:2;display:flex;justify-content:space-between;width:100%;padding:12px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
 .player .soon{position:absolute;top:14px;left:16px;z-index:2;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--violet-2);opacity:.85}
 .player .play{position:relative;z-index:2;height:100%;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
-.player .play i{width:46px;height:46px;border:1px solid var(--paper);border-radius:50%;display:grid;place-items:center;transition:background var(--dur-q) var(--ease),color var(--dur-q) var(--ease),transform var(--dur-q) var(--ease)}
+.player .play i{width:46px;height:46px;border:1px solid var(--paper);border-radius:50%;display:grid;place-items:center;transition:background var(--dur-q) var(--ease),color var(--dur-q) var(--ease),transform var(--dur-q) var(--ease);will-change:transform}
 .player:hover .play i{transform:scale(1.07)}
 .player:hover .play i{background:var(--paper);color:var(--ink)}
 .player .play svg{width:14px;height:14px;margin-left:2px}
@@ -160,7 +160,7 @@ section.panel{padding-block:clamp(48px,7vw,84px)}
 .fgrid{display:grid;grid-template-columns:repeat(12,1fr);margin-top:clamp(24px,4vw,40px)}
 .fgrid a{all:unset;cursor:zoom-in;position:relative;overflow:hidden;background:var(--ink-2);display:block}
 .fgrid a:focus-visible{outline:1.5px solid var(--violet-2);outline-offset:-3px}
-.fgrid img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15);transition:transform var(--dur-l) var(--ease),filter var(--dur-s) var(--ease)}
+.fgrid img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15);transition:transform var(--dur-l) var(--ease),filter var(--dur-s) var(--ease);will-change:transform}
 .fgrid a:hover img{transform:scale(1.045);filter:grayscale(0)}
 .fgrid .tag{position:absolute;left:0;bottom:0;padding:10px 12px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);width:100%}
 .f1{grid-column:span 5;aspect-ratio:3/4}
@@ -184,7 +184,7 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 .mgrid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(24px,4vw,40px)}
 .mtile{all:unset;cursor:pointer;position:relative;display:block;aspect-ratio:3/4;overflow:hidden;background:var(--ink-2)}
 .mtile:focus-visible{outline:1.5px solid var(--violet-2);outline-offset:-3px}
-.mtile img{width:100%;height:100%;object-fit:cover;filter:grayscale(.5) brightness(.55) contrast(1.05);transition:transform var(--dur-l) var(--ease),filter var(--dur-s) var(--ease)}
+.mtile img{width:100%;height:100%;object-fit:cover;filter:grayscale(.5) brightness(.55) contrast(1.05);transition:transform var(--dur-l) var(--ease),filter var(--dur-s) var(--ease);will-change:transform}
 .mtile:hover img{transform:scale(1.045);filter:grayscale(.1) brightness(.68)}
 .mtile::before{content:"";position:absolute;inset:0;background:color-mix(in srgb,var(--violet) 30%,transparent);mix-blend-mode:multiply;pointer-events:none;transition:opacity var(--dur-s) var(--ease)}
 .mtile:hover::before{opacity:.5}
@@ -202,7 +202,7 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 /* ---------- 05 GALERIA: sanfona de ponta a ponta, fundo violeta entre as fotos ---------- */
 .gal2{position:relative;display:flex;gap:4px;width:100%;height:clamp(360px,62vh,620px);background:var(--violet);overflow:hidden}
 .gal2 a{position:relative;flex:1 1 0;min-width:0;overflow:hidden;display:block;text-decoration:none;transition:flex-grow var(--dur-l) var(--ease)}
-.gal2 a img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) brightness(.68) saturate(.85);mix-blend-mode:luminosity;transition:filter var(--dur-s) var(--ease),transform var(--dur-l) var(--ease)}
+.gal2 a img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) brightness(.68) saturate(.85);mix-blend-mode:luminosity;transition:filter var(--dur-s) var(--ease),transform var(--dur-l) var(--ease);will-change:transform}
 .gal2 a::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75),transparent 48%);opacity:0;transition:opacity .4s}
 .gal2 a .cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;opacity:0;transform:translateY(10px);transition:opacity var(--dur-s) var(--ease) 70ms,transform var(--dur-s) var(--ease) 70ms;white-space:nowrap;overflow:hidden}
 .gal2 a .cap b{display:block;font-family:var(--body);font-weight:600;font-size:19px;color:#fff}
