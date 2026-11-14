@@ -67,11 +67,15 @@ p{margin:0}
 /* ---------- topo: sobreposto na foto, sem fundo próprio ---------- */
 .top{position:absolute;top:0;left:0;right:0;z-index:5;padding-top:calc(18px + env(safe-area-inset-top,0px));padding-bottom:18px}
 .top .row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;min-width:0}
-.top .brand img{height:16px;width:auto;margin-bottom:8px}
+.top .brand{display:block;text-decoration:none;cursor:pointer}
+.top .brand img{height:16px;width:auto;margin-bottom:8px;transition:opacity var(--dur-q) var(--ease)}
+.top .brand:hover img{opacity:.8}
 .top .brand p{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
 .top nav{display:flex;align-items:center;gap:22px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
-.top nav a{text-decoration:none;color:var(--paper);opacity:.75;transition:opacity var(--dur-q) var(--ease)}
+.top nav a{position:relative;text-decoration:none;color:var(--paper);opacity:.75;transition:opacity var(--dur-q) var(--ease);padding-bottom:3px}
+.top nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--violet-2);transition:right var(--dur-s) var(--ease)}
 .top nav a:hover{opacity:1}
+.top nav a:hover::after{right:0}
 .top .status{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);text-align:right;white-space:nowrap}
 .toggle{all:unset;display:flex;gap:4px;cursor:pointer;align-items:center}
 .toggle i{width:8px;height:8px;border:1px solid var(--paper)}
@@ -190,7 +194,11 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 .mtile .mt-top .n{color:var(--violet-2)}
 .mtile .mt-top .plat{color:var(--paper);opacity:.75}
 .mtile .mt-bot{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:18px 16px}
-.mtile .mt-bot b{display:block;font-family:var(--body);font-weight:800;letter-spacing:-.01em;font-size:clamp(34px,5.4vw,58px);line-height:.96;color:var(--paper);margin-bottom:8px;text-wrap:balance}
+.mtile .mt-bot b{display:block;font-family:var(--body);font-weight:800;letter-spacing:-.015em;text-transform:uppercase;font-size:clamp(28px,4.6vw,48px);line-height:.98;color:var(--paper);margin-bottom:8px}
+.mtile{opacity:0;transform:translateX(-32px);transition:opacity var(--dur-l) var(--ease),transform var(--dur-l) var(--ease)}
+.mtile.is-in{opacity:1;transform:translateX(0)}
+.mgrid a:nth-child(2).is-in{transition-delay:.1s}
+.mgrid a:nth-child(3).is-in{transition-delay:.2s}
 .mtile .mt-bot .kind{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .mtile .mt-bot .go{margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--paper)}
 .mtile .mt-bot .go .sq{width:5px;height:5px;background:var(--violet-2)}
@@ -222,9 +230,9 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 .book-grid{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:clamp(24px,4vw,56px);margin-top:clamp(28px,4vw,44px)}
 .book-grid .lead p{font-size:clamp(20px,2.4vw,30px);font-weight:500;line-height:1.3;max-width:20ch}
 .contact{display:grid;gap:0}
-.contact div{display:grid;gap:4px;padding:12px 0;border-bottom:1px solid var(--line)}
+.contact div{display:grid;gap:2px;padding:8px 0;border-bottom:1px solid var(--line)}
 .contact dt{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
-.contact dd{margin:0;font-size:16px;font-family:var(--mono);user-select:all}
+.contact dd{margin:0;font-size:18px;font-family:var(--mono);user-select:all}
 .social-list{font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;display:grid;gap:10px;align-content:start}
 .social-list a{text-decoration:none;display:flex;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid var(--line);color:var(--paper);opacity:.8;transition:opacity var(--dur-q) var(--ease)}
 .social-list a:hover{opacity:1}
@@ -241,10 +249,34 @@ footer img{height:14px;width:auto;opacity:.8}
 .note b{font-family:var(--mono);font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:4px;color:var(--paper)}
 body.notes .note{display:block}
 
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+/* ---------- mini player fixo (toca o Spotify sem sair da página) ---------- */
+.player{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:56;display:grid;justify-items:end;gap:8px}
+.player__panel{width:min(360px,calc(100vw - 32px));background:var(--ink-2);border:1px solid var(--line);overflow:hidden}
+.player__panel iframe{display:block;border:0;width:100%;height:352px}
+.player__btn{all:unset;display:flex;align-items:center;gap:10px;padding:8px 18px 8px 8px;background:var(--paper);border-radius:999px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.player__icon{position:relative;width:34px;height:34px;border-radius:50%;background:var(--violet)}
+.player__icon::before{content:"";position:absolute;left:13px;top:11px;border-left:11px solid var(--paper);border-top:6px solid transparent;border-bottom:6px solid transparent}
+.player[data-open="true"] .player__icon::before{left:12px;top:11px;width:3px;height:12px;border:0;background:var(--paper);box-shadow:6px 0 0 var(--paper)}
+.player__eq{display:flex;align-items:flex-end;gap:2px;height:16px}
+.player__eq i{width:3px;height:3px;background:var(--violet)}
+.player[data-open="true"] .player__eq i{height:16px;animation:eqA .9s ease-in-out infinite}
+.player[data-open="true"] .player__eq i:nth-child(2){animation-name:eqB;animation-duration:1.25s;animation-delay:-.3s}
+.player[data-open="true"] .player__eq i:nth-child(3){animation-name:eqC;animation-duration:.7s;animation-delay:-.5s}
+@keyframes eqA{0%{transform:scaleY(.2)}18%{transform:scaleY(1)}32%{transform:scaleY(.45)}50%{transform:scaleY(.85)}68%{transform:scaleY(.25)}84%{transform:scaleY(.7)}100%{transform:scaleY(.2)}}
+@keyframes eqB{0%{transform:scaleY(.6)}22%{transform:scaleY(.25)}40%{transform:scaleY(.95)}58%{transform:scaleY(.4)}76%{transform:scaleY(1)}100%{transform:scaleY(.6)}}
+@keyframes eqC{0%{transform:scaleY(.35)}25%{transform:scaleY(.8)}45%{transform:scaleY(.15)}70%{transform:scaleY(1)}100%{transform:scaleY(.35)}}
+.player__t{font:600 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+@media (max-width:480px){.player__t{display:none}}
+
+/* ---------- reveal ao rolar (aplicado via JS) ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity var(--dur-l) var(--ease),transform var(--dur-l) var(--ease)}
+.reveal.is-in{opacity:1;transform:translateY(0)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.mtile,.reveal{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
+<span id="topo" aria-hidden="true"></span>
 
 <a class="side-tab" href="https://open.spotify.com/artist/5Luy0WFYQ2JGezy5EyTBnx" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span><span>Ouvir</span></a>
 
@@ -253,10 +285,10 @@ body.notes .note{display:block}
   <section class="hero" aria-labelledby="hero-name">
     <header class="top gx">
       <div class="row">
-        <div class="brand">
+        <a class="brand" href="#topo" aria-label="Voltar ao topo">
           <img src="img/Logo.png" alt="Bárbara Thomaz" id="hero-name">
           <p>DJ · Melodic Techno</p>
-        </div>
+        </a>
         <nav aria-label="Principal">
           <a href="#sobre">Sobre</a>
           <a href="#musica">Música</a>
@@ -305,7 +337,7 @@ body.notes .note{display:block}
   <div class="gx"><div class="note"><b>Ref. abertura · Offform (talent agency)</b>Grade de 3 fotos de sangria total no lugar de uma única foto com moldura. O menu fica sobreposto direto na imagem, sem barra própria. A linha com "2026" e as categorias (clicáveis, levam às seções) substitui o texto de status solto. Canto inferior direito ganhou uma lista numerada, como a "01 WOMEN / 02 MEN" da referência.</div></div>
 
   <!-- 02 SOBRE -->
-  <section class="panel" id="sobre" aria-labelledby="sobre-t">
+  <section class="panel" id="sobre" aria-labelledby="sobre-t" style="padding-top:clamp(22px,3.4vw,34px);padding-bottom:clamp(18px,2.6vw,28px)">
     <div class="gx">
       <div class="sec-label"><span class="t mn">Sobre — Bárbara Thomaz</span><span class="rule"></span><span class="mark" aria-hidden="true"></span></div>
       <div class="about3">
@@ -318,7 +350,7 @@ body.notes .note{display:block}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Press kit</a>
           </div>
         </div>
-        <div class="offer">
+        <div class="offer reveal">
           <div><span class="num mn">01</span><span>Sets ao vivo</span></div>
           <div><span class="num mn">02</span><span>Produções &amp; remixes</span></div>
           <div><span class="num mn">03</span><span>Bookings</span></div>
@@ -330,24 +362,24 @@ body.notes .note{display:block}
   </section>
 
   <!-- 03 MÚSICA -->
-  <section class="panel" id="musica" aria-labelledby="musica-t" style="padding-top:0">
+  <section class="panel" id="musica" aria-labelledby="musica-t" style="padding-top:0;padding-bottom:clamp(18px,2.6vw,28px)">
     <div class="gx">
       <div class="sec-label"><span class="t mn" id="musica-t">Música — sets e lançamentos</span><span class="rule"></span><span class="mark" aria-hidden="true"></span></div>
       <div class="mgrid">
         <a class="mtile" href="https://open.spotify.com/artist/5Luy0WFYQ2JGezy5EyTBnx" target="_blank" rel="noopener">
           <img src="img/music-spotify.webp" alt="" aria-hidden="true" loading="lazy" width="1086" height="1448">
           <span class="mt-top"><span class="n mn">01</span><span class="plat">Spotify</span></span>
-          <span class="mt-bot"><b>Bárbara Thomaz</b><span class="kind">Perfil de artista</span><span class="go">Ouvir<span class="sq" aria-hidden="true"></span></span></span>
+          <span class="mt-bot"><b>Bárbara<br>Thomaz</b><span class="kind">Perfil de artista</span><span class="go">Ouvir<span class="sq" aria-hidden="true"></span></span></span>
         </a>
         <a class="mtile" href="https://soundcloud.com/dj-barbara-thomaz/sets/who-is-barbara" target="_blank" rel="noopener">
           <img src="img/music-soundcloud.webp" alt="" aria-hidden="true" loading="lazy" width="1086" height="1448">
           <span class="mt-top"><span class="n mn">02</span><span class="plat">SoundCloud</span></span>
-          <span class="mt-bot"><b>Who Is Bárbara</b><span class="kind">Playlist</span><span class="go">Ouvir<span class="sq" aria-hidden="true"></span></span></span>
+          <span class="mt-bot"><b>Who Is<br>Bárbara</b><span class="kind">Playlist</span><span class="go">Ouvir<span class="sq" aria-hidden="true"></span></span></span>
         </a>
         <a class="mtile" href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener">
           <img src="img/music-youtube.webp" alt="" aria-hidden="true" loading="lazy" width="1086" height="1448">
           <span class="mt-top"><span class="n mn">03</span><span class="plat">YouTube</span></span>
-          <span class="mt-bot"><b>Canal Bárbara Thomaz</b><span class="kind">Sets e vídeos</span><span class="go">Assistir<span class="sq" aria-hidden="true"></span></span></span>
+          <span class="mt-bot"><b>Canal<br>Bárbara Thomaz</b><span class="kind">Sets e vídeos</span><span class="go">Assistir<span class="sq" aria-hidden="true"></span></span></span>
         </a>
       </div>
       <div class="note"><b>Ref. música</b>Subiu para logo depois de "Sobre", no lugar onde estava o "Set em destaque" (a pedido do Guto). Cada item é um quadro com foto de estúdio no fundo, no mesmo estilo da galeria — no lugar da lista de texto ou de widgets incorporados (o site atual carrega o player do Spotify, um vídeo do YouTube e o widget do SoundCloud lado a lado, cada um com a cara da própria plataforma). Nenhum player de terceiro carrega aqui — o clique abre a plataforma. "Who Is Bárbara" segue como playlist até confirmarmos o que é.</div>
@@ -355,11 +387,11 @@ body.notes .note{display:block}
   </section>
 
   <!-- 04 SET EM DESTAQUE -->
-  <section class="panel" id="set" aria-labelledby="set-t" style="padding-top:0">
+  <section class="panel" id="set" aria-labelledby="set-t" style="padding-top:0;padding-bottom:clamp(18px,2.6vw,28px)">
     <div class="gx">
       <div class="sec-label"><span class="t mn">Set em destaque</span><span class="rule"></span><span class="mark" aria-hidden="true"></span></div>
     </div>
-      <div class="feature">
+      <div class="feature reveal">
         <img class="cover" src="img/set-cover.webp" alt="Capa do set, retrato de Bárbara Thomaz com roupa metalizada sobre fundo violeta abstrato">
         <a class="player" href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener" id="set-t">
           <span class="play"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></i>Assistir no YouTube</span>
@@ -373,20 +405,18 @@ body.notes .note{display:block}
   <section class="panel" id="galeria-sec" aria-labelledby="galeria-t" style="padding-top:0;padding-bottom:0">
     <div class="gx sec-label"><span class="t mn" id="galeria-t">Em cena — galeria</span><span class="rule"></span><span class="mark" aria-hidden="true"></span></div>
     <div class="gal2" id="gal">
-      <a href="#" aria-label="Ampliar foto 1 de 12"><span class="n mn">01</span><img src="img/IMG_7349.jpg" alt="Bárbara Thomaz de jaqueta de couro preta e óculos escuros"><span class="cap"><b>Postura de estúdio</b><span>Preto · Retrato</span></span></a>
-      <a href="#" aria-label="Ampliar foto 2 de 12"><span class="n mn">02</span><img src="img/IMG_7490.jpg" alt="Bárbara de costas, conjunto de cetim dourado"><span class="cap"><b>De costas</b><span>Dourado · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 3 de 12"><span class="n mn">03</span><img src="img/IMG_7343.jpg" alt="Bárbara de macacão metálico prateado, óculos escuros"><span class="cap"><b>Metalizado</b><span>Prateado · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 4 de 12"><span class="n mn">04</span><img src="img/IMG_7496.jpg" alt="Bárbara em conjunto de cetim dourado, de frente"><span class="cap"><b>Cetim dourado</b><span>Dourado · Retrato</span></span></a>
-      <a href="#" aria-label="Ampliar foto 5 de 12"><span class="n mn">05</span><img src="img/IMG_7341.jpg" alt="Bárbara de vestido longo preto, mãos na cabeça" style="object-position:50% 10%"><span class="cap"><b>Vestido longo</b><span>Preto · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 6 de 12"><span class="n mn">06</span><img src="img/IMG_7330.jpg" alt="Bárbara de vestido metálico prateado"><span class="cap"><b>Vestido metálico</b><span>Prateado · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 7 de 12"><span class="n mn">07</span><img src="img/IMG_7345.jpg" alt="Bárbara de jaqueta de couro e óculos vermelhos"><span class="cap"><b>Jaqueta de couro</b><span>Preto · Retrato</span></span></a>
-      <a href="#" aria-label="Ampliar foto 8 de 12"><span class="n mn">08</span><img src="img/IMG_7346.jpg" alt="Bárbara de jaqueta de couro, ajustando os óculos escuros" style="object-position:50% 12%"><span class="cap"><b>Ajustando os óculos</b><span>Preto · Retrato</span></span></a>
-      <a href="#" aria-label="Ampliar foto 9 de 12"><span class="n mn">09</span><img src="img/IMG_7350.jpg" alt="Bárbara de blazer preto e óculos vermelhos, braços cruzados"><span class="cap"><b>Braços cruzados</b><span>Preto · Retrato</span></span></a>
-      <a href="#" aria-label="Ampliar foto 10 de 12"><span class="n mn">10</span><img src="img/IMG_7351.jpg" alt="Bárbara de vestido preto, mãos na cintura" style="object-position:50% 15%"><span class="cap"><b>Mãos na cintura</b><span>Preto · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 11 de 12"><span class="n mn">11</span><img src="img/IMG_7359.jpg" alt="Bárbara de vestido preto, mãos na cintura, outro ângulo" style="object-position:50% 12%"><span class="cap"><b>Outro ângulo</b><span>Preto · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 12 de 12"><span class="n mn">12</span><img src="img/IMG_7344.jpg" alt="Bárbara de vestido preto"><span class="cap"><b>Vestido preto</b><span>Preto · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 1 de 10"><span class="n mn">01</span><img src="img/IMG_7349.jpg" alt="Bárbara Thomaz de jaqueta de couro preta e óculos escuros"><span class="cap"><b>Postura de estúdio</b><span>Preto · Retrato</span></span></a>
+      <a href="#" aria-label="Ampliar foto 2 de 10"><span class="n mn">02</span><img src="img/IMG_7343.jpg" alt="Bárbara de macacão metálico prateado, óculos escuros"><span class="cap"><b>Metalizado</b><span>Prateado · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 3 de 10"><span class="n mn">03</span><img src="img/IMG_7341.jpg" alt="Bárbara de vestido longo preto, mãos na cabeça" style="object-position:50% 10%"><span class="cap"><b>Vestido longo</b><span>Preto · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 4 de 10"><span class="n mn">04</span><img src="img/IMG_7330.jpg" alt="Bárbara de vestido metálico prateado"><span class="cap"><b>Vestido metálico</b><span>Prateado · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 5 de 10"><span class="n mn">05</span><img src="img/IMG_7345.jpg" alt="Bárbara de jaqueta de couro e óculos vermelhos"><span class="cap"><b>Jaqueta de couro</b><span>Preto · Retrato</span></span></a>
+      <a href="#" aria-label="Ampliar foto 6 de 10"><span class="n mn">06</span><img src="img/IMG_7346.jpg" alt="Bárbara de jaqueta de couro, ajustando os óculos escuros" style="object-position:50% 12%"><span class="cap"><b>Ajustando os óculos</b><span>Preto · Retrato</span></span></a>
+      <a href="#" aria-label="Ampliar foto 7 de 10"><span class="n mn">07</span><img src="img/IMG_7350.jpg" alt="Bárbara de blazer preto e óculos vermelhos, braços cruzados"><span class="cap"><b>Braços cruzados</b><span>Preto · Retrato</span></span></a>
+      <a href="#" aria-label="Ampliar foto 8 de 10"><span class="n mn">08</span><img src="img/IMG_7351.jpg" alt="Bárbara de vestido preto, mãos na cintura" style="object-position:50% 15%"><span class="cap"><b>Mãos na cintura</b><span>Preto · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 9 de 10"><span class="n mn">09</span><img src="img/IMG_7359.jpg" alt="Bárbara de vestido preto, mãos na cintura, outro ângulo" style="object-position:50% 12%"><span class="cap"><b>Outro ângulo</b><span>Preto · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 10 de 10"><span class="n mn">10</span><img src="img/IMG_7344.jpg" alt="Bárbara de vestido preto"><span class="cap"><b>Vestido preto</b><span>Preto · Produção</span></span></a>
     </div>
-    <div class="gx"><div class="note"><b>Ref. galeria · v3</b>A grade tipo alvenaria não ficou boa — tirei ela. Agora é uma sanfona de ponta a ponta de verdade (sem container centralizado): as 12 fotos ficam lado a lado, estreitas, com uma linha de violeta sólido entre elas; passar o mouse expande a foto e revela o nome, o resto encolhe. No celular (sem hover) vira uma fita que rola com parada em cada foto, já em cor plena. Clicar abre a mesma ampliação de sempre. Categoria por cor do look (preto/dourado/prateado) e por tipo de enquadramento (retrato/produção) — os dois lidos direto da própria foto, nada inventado.</div></div>
+    <div class="gx"><div class="note"><b>Ref. galeria · v3</b>A grade tipo alvenaria não ficou boa — tirei ela. Agora é uma sanfona de ponta a ponta de verdade (sem container centralizado): as fotos ficam lado a lado, estreitas, com uma linha de violeta sólido entre elas; passar o mouse expande a foto e revela o nome, o resto encolhe. No celular (sem hover) vira uma fita que rola com parada em cada foto, já em cor plena. Clicar abre a mesma ampliação de sempre. Categoria por cor do look (preto/dourado/prateado) e por tipo de enquadramento (retrato/produção) — os dois lidos direto da própria foto, nada inventado. Tirei as duas fotos que já apareciam na abertura (de costas e cetim dourado de frente) — aqui fica só o que ainda não foi mostrado.</div></div>
   </section>
 
   <!-- 06 BOOKINGS -->
@@ -403,10 +433,10 @@ body.notes .note{display:block}
             <a class="btn btn--line" href="https://drive.google.com/drive/folders/17zc0Qg9nRIW7BBWXx10rjM_WAhC-Uf4g" target="_blank" rel="noopener">Press kit</a>
           </div>
         </div>
-        <dl class="contact">
+        <dl class="contact reveal">
           <div><dt>WhatsApp</dt><dd>(19) 98900-5660</dd></div>
         </dl>
-        <nav class="social-list" aria-label="Redes">
+        <nav class="social-list reveal" aria-label="Redes">
           <a href="https://www.instagram.com/bathomaz" target="_blank" rel="noopener">Instagram<span class="num">↗</span></a>
           <a href="https://open.spotify.com/artist/5Luy0WFYQ2JGezy5EyTBnx" target="_blank" rel="noopener">Spotify<span class="num">↗</span></a>
           <a href="https://soundcloud.com/dj-barbara-thomaz" target="_blank" rel="noopener">SoundCloud<span class="num">↗</span></a>
@@ -435,6 +465,15 @@ body.notes .note{display:block}
     <button id="lb-close">Fechar</button>
   </div>
 </dialog>
+
+<div class="player" data-open="false">
+  <div class="player__panel" id="player-panel" hidden></div>
+  <button class="player__btn" type="button" id="player-btn" aria-controls="player-panel" aria-expanded="false">
+    <span class="player__icon" aria-hidden="true"></span>
+    <span class="player__eq" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="player__t">Ouvir no Spotify</span>
+  </button>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
@@ -468,6 +507,30 @@ body.notes .note{display:block}
   dlg.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});
   dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
   dlg.addEventListener('close',()=>last&&last.focus());
+
+  // Mini player: carrega o embed do Spotify só no clique, sem sair da página
+  const SPOTIFY='https://open.spotify.com/embed/artist/5Luy0WFYQ2JGezy5EyTBnx?utm_source=generator&theme=0';
+  const player=document.querySelector('.player'), panel=document.getElementById('player-panel'), pbtn=document.getElementById('player-btn');
+  pbtn.addEventListener('click',()=>{
+    const open=player.dataset.open==='true';
+    if(open){ player.dataset.open='false'; panel.hidden=true; pbtn.setAttribute('aria-expanded','false'); return }
+    if(!panel.firstChild){
+      const f=document.createElement('iframe');
+      f.src=SPOTIFY; f.title='Bárbara Thomaz no Spotify'; f.loading='lazy';
+      f.allow='clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+      panel.appendChild(f);
+    }
+    panel.hidden=false; player.dataset.open='true'; pbtn.setAttribute('aria-expanded','true');
+  });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&player.dataset.open==='true')pbtn.click()});
+
+  // Reveal ao rolar (cards de música entram da esquerda; demais sobem com fade)
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}})},{threshold:.2,rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.mtile,.reveal').forEach(el=>io.observe(el));
+  } else {
+    document.querySelectorAll('.mtile,.reveal').forEach(el=>el.classList.add('is-in'));
+  }
 })();
 </script>
 </body>
