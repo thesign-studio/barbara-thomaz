@@ -8,7 +8,7 @@
 <meta name="description" content="Bárbara Thomaz, DJ de Melodic Techno — música, sets e bookings.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600&family=Unbounded:wght@900&display=swap">
 <style>
 /* Layout: grade editorial (agência de moda premium) — fotos de ponta a ponta em colunas desiguais,
    rótulos minúsculos em caixa alta, numeração, linha divisória com categorias. Um só sistema
@@ -134,28 +134,30 @@ section.panel{padding-block:clamp(48px,7vw,84px)}
 @media (max-width:860px){.about3{grid-template-columns:1fr}}
 
 /* ---------- 03 SET EM DESTAQUE ---------- */
-.feature{display:grid;grid-template-columns:1.5fr 1fr;gap:0;margin-top:clamp(28px,4vw,44px)}
-.player{position:relative;display:block;aspect-ratio:12/5;min-height:300px;overflow:hidden;text-decoration:none;background:var(--ink-2)}
-.player .cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;transition:transform var(--dur-l) var(--ease);will-change:transform}
-.player:hover .cover{transform:scale(1.03)}
-.player::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.08) 46%,transparent 62%)}
+.feature{position:relative;overflow:hidden;height:clamp(420px,58vh,560px);margin-top:clamp(28px,4vw,44px)}
+.feature .cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:66% 42%;transition:transform var(--dur-l) var(--ease);will-change:transform}
+.feature:hover .cover{transform:scale(1.025)}
+.feature::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(0,0,0,.52) 0%,rgba(0,0,0,.08) 44%,transparent 58%);pointer-events:none}
+.feature-row{position:relative;z-index:1;display:flex;height:100%}
+.player{position:relative;flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;text-decoration:none}
 .player .tag{position:absolute;left:0;bottom:0;z-index:2;display:flex;justify-content:space-between;width:100%;padding:12px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 1px 4px rgba(0,0,0,.6)}
-.player .play{position:relative;z-index:2;height:100%;width:62%;display:flex;align-items:center;justify-content:center;gap:16px;font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+.player .play{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:16px;font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-shadow:0 1px 4px rgba(0,0,0,.5)}
 .player .play i{width:72px;height:72px;border:1.5px solid var(--paper);border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--ink) 35%,transparent);backdrop-filter:blur(2px);transition:background var(--dur-q) var(--ease),color var(--dur-q) var(--ease),transform var(--dur-q) var(--ease);will-change:transform}
+.player:hover .play i{background:var(--paper);color:var(--ink);transform:scale(1.07)}
 .player:hover .play i{transform:scale(1.07)}
 .player:hover .play i{background:var(--paper);color:var(--ink)}
 .player .play svg{width:22px;height:22px;margin-left:3px}
-.feature-info{background:var(--ink-2);padding:clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:24px}
+.feature-info{flex:0 0 clamp(300px,34%,400px);min-width:0;background:color-mix(in srgb,var(--ink-2) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:24px;overflow-y:auto}
+@media (max-width:860px){.feature-row{flex-direction:column}.feature-info{flex:none;width:100%}.player{min-height:200px}}
 .date-call{flex:1;display:flex;flex-direction:column;justify-content:center;gap:12px;border-block:1px solid var(--line);padding-block:clamp(20px,4vw,40px)}
 .date-call .eyebrow{color:var(--mute)}
-.date-call .date-big{font-family:var(--round);font-weight:900;font-style:normal;font-size:clamp(30px,4vw,54px);line-height:1;color:var(--violet-2);text-transform:uppercase;letter-spacing:-.01em}
+.date-call .date-big{font-family:var(--mono);font-weight:700;font-style:normal;font-size:clamp(30px,4vw,54px);line-height:1;color:var(--violet-2);text-transform:uppercase;letter-spacing:-.01em}
 .date-call .btn{align-self:flex-start;margin-top:4px}
 .facts{display:grid;gap:0}
 .facts div{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase}
 .facts dt{color:var(--mute)}
 .facts dd{margin:0;text-align:right}
 .pend{font-style:italic;color:var(--violet-2)}
-@media (max-width:860px){.feature{grid-template-columns:1fr}}
 
 /* ---------- 04 GALERIA: grade desigual, numerada ---------- */
 .fgrid{display:grid;grid-template-columns:repeat(12,1fr);margin-top:clamp(24px,4vw,40px)}
@@ -234,13 +236,16 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 .social-list a:hover{opacity:1}
 @media (max-width:860px){.book-grid{grid-template-columns:1fr}}
 
-/* ---------- selo circular, no final da página ---------- */
-.stamp{display:flex;justify-content:center;align-items:center;position:relative;padding-block:clamp(28px,5vw,48px);background:var(--ink)}
-.stamp svg{width:min(42vw,210px);height:auto;animation:spin 20s linear infinite}
-.stamp text{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;fill:var(--mute)}
-.stamp-dot{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--violet-2)}
-@keyframes spin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.stamp svg{animation:none}}
+/* ---------- nome gigante preenchido com texto minúsculo repetido, no final da página ---------- */
+.wordmark{display:flex;justify-content:center;align-items:center;padding-block:clamp(8px,3vw,20px);background:var(--ink);overflow:hidden}
+.wordmark span{
+  font-family:'Unbounded',var(--mono);font-weight:900;text-transform:uppercase;
+  font-size:clamp(40px,11vw,150px);line-height:.9;letter-spacing:.05em;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='16'%3E%3Ctext x='0' y='12' font-family='monospace' font-size='9' letter-spacing='.5' fill='%239B5DE5'%3EBARBARA THOMAZ%3C/text%3E%3C/svg%3E");
+  background-repeat:repeat;background-position:0 50%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  white-space:nowrap;display:inline-block;
+}
 
 /* ---------- rodapé ---------- */
 footer{border-top:1px solid var(--line);padding-block:28px calc(28px + env(safe-area-inset-bottom,0px))}
@@ -365,27 +370,29 @@ body.notes .note{display:block}
   </section>
 
   <!-- 04 SET EM DESTAQUE -->
-  <section class="panel" id="set" aria-labelledby="set-t">
+  <section class="panel" id="set" aria-labelledby="set-t" style="padding-top:0">
     <div class="gx">
       <div class="sec-label"><span class="t mn">Set em destaque</span><span class="rule"></span><span class="mark" aria-hidden="true"></span></div>
     </div>
       <div class="feature">
-        <a class="player" href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener" id="set-t">
-          <img class="cover" src="img/set-cover.webp" alt="Capa do set, retrato de Bárbara Thomaz com roupa metalizada sobre fundo violeta abstrato">
-          <span class="play"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></i>Assistir no YouTube</span>
-          <span class="tag mn"><span>B2B Lerock's × Bárbara Thomaz</span><span>YouTube</span></span>
-        </a>
-        <div class="feature-info">
-          <dl class="facts">
-            <div><dt>Local</dt><dd>New York Pub</dd></div>
-            <div><dt>Formato</dt><dd>B2B</dd></div>
-          </dl>
-          <div class="date-call">
-            <p class="eyebrow">Data da apresentação</p>
-            <p class="date-big">A confirmar</p>
-            <a class="btn btn--line" href="#bookings">Falar sobre uma data</a>
+        <img class="cover" src="img/set-cover.webp" alt="Capa do set, retrato de Bárbara Thomaz com roupa metalizada sobre fundo violeta abstrato">
+        <div class="feature-row">
+          <a class="player" href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener" id="set-t">
+            <span class="play"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></i>Assistir no YouTube</span>
+            <span class="tag mn"><span>B2B Lerock's × Bárbara Thomaz</span><span>YouTube</span></span>
+          </a>
+          <div class="feature-info">
+            <dl class="facts">
+              <div><dt>Local</dt><dd>New York Pub</dd></div>
+              <div><dt>Formato</dt><dd>B2B</dd></div>
+            </dl>
+            <div class="date-call">
+              <p class="eyebrow">Data da apresentação</p>
+              <p class="date-big">A confirmar</p>
+              <a class="btn btn--line" href="#bookings">Falar sobre uma data</a>
+            </div>
+            <p style="font-size:13px;color:var(--mute);line-height:1.6">Um registro ao vivo da pista. O link abre direto no YouTube — nada carrega junto com a página.</p>
           </div>
-          <p style="font-size:13px;color:var(--mute);line-height:1.6">Um registro ao vivo da pista. O link abre direto no YouTube — nada carrega junto com a página.</p>
         </div>
       </div>
       <div class="gx"><div class="note"><b>Ref. set</b>O fundo liso virou a capa que o Guto mandou pronta (retrato com roupa metalizada sobre fundo violeta abstrato) — o botão de play ficou bem maior e o texto se encaixou no lado esquerdo da imagem, que já vinha com espaço pra isso. Ainda não é o frame real do vídeo (é uma capa, não uma miniatura do YouTube), mas já não é mais uma foto solta de estúdio. Se um set solo for aprovado, ele assume este lugar.</div></div>
@@ -440,13 +447,7 @@ body.notes .note{display:block}
   </section>
 </main>
 
-<div class="stamp" aria-hidden="true">
-  <svg viewBox="0 0 200 200">
-    <defs><path id="stampPath" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"></path></defs>
-    <text><textPath href="#stampPath" startOffset="0%">Bárbara Thomaz · Melodic Techno · Bárbara Thomaz · Melodic Techno · </textPath></text>
-  </svg>
-  <span class="stamp-dot"></span>
-</div>
+<div class="wordmark" aria-hidden="true"><span>Bárbara</span></div>
 
 <footer>
   <div class="gx row">
