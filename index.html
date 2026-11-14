@@ -1,205 +1,215 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bárbara Thomaz — Site</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="img/Logo.png">
+<meta name="description" content="Bárbara Thomaz, DJ de Melodic Techno — música, sets e bookings.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: editorial noturno. Foto grande à direita, texto em coluna estreita, muito respiro; violeta só como luz. Tema único escuro por escolha. */
+/* Layout: painéis colados, sem respiro entre seções — tipografia enorme fazendo o papel do grafismo, uma faixa corrida no topo e uma fita de fotos, na linha do lerocks. Tema único escuro, violeta como cor-bandeira em vez de luz difusa. */
 :root{
-  --ink:#0B0A10;      /* preto profundo */
-  --ink-2:#14121C;    /* superfície */
-  --line:#2A2635;     /* divisores */
-  --paper:#F2F0F5;    /* branco suave */
-  --mute:#A29DB0;     /* texto secundário */
-  --violet:#9B5DE5;   /* acento / luz */
-  --lav:#C9B8E8;      /* lavanda clara */
+  --ink:#0B0A10;
+  --ink-2:#161320;
+  --paper:#F2F0F5;
+  --mute:#9B94AC;
+  --violet:#7C3AED;
+  --violet-2:#9B5DE5;
+  --lav:#C9B8E8;
   --display:"Archivo","Arial Narrow",Helvetica,sans-serif;
   --body:"Instrument Sans","Segoe UI",Helvetica,Arial,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
-  --gut:max(16px,env(safe-area-inset-left,0px));
-  --gut-r:max(16px,env(safe-area-inset-right,0px));
+  --gut:max(20px,env(safe-area-inset-left,0px));
+  --gut-r:max(20px,env(safe-area-inset-right,0px));
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:hidden;width:100%}
+body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%;margin:0}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
 a{color:inherit}
 img{display:block;max-width:100%;height:auto}
-:focus-visible{outline:2px solid var(--lav);outline-offset:3px;border-radius:2px}
-.wrap{max-width:1240px;margin-inline:auto;padding-left:var(--gut);padding-right:var(--gut-r)}
+:focus-visible{outline:2px solid var(--lav);outline-offset:3px}
+.gx{padding-left:var(--gut);padding-right:var(--gut-r)}
+.disp{font-family:var(--display)}
 
 /* ---------- tipografia ---------- */
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--lav)}
-h2{font-family:var(--display);font-stretch:112%;font-weight:600;font-size:clamp(34px,5.2vw,64px);line-height:1.02;letter-spacing:-.01em;margin:0;text-wrap:balance}
-h3{font-family:var(--display);font-stretch:105%;font-weight:600;font-size:20px;margin:0;line-height:1.2}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--lav)}
+.giant{font-family:var(--display);font-stretch:70%;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:.88;margin:0;text-wrap:balance}
 p{margin:0}
-.lead{font-size:clamp(18px,1.6vw,20px);color:var(--paper);max-width:58ch}
 .muted{color:var(--mute)}
 
 /* ---------- botões ---------- */
-.btn{display:inline-flex;align-items:center;gap:.6em;font-family:var(--display);font-stretch:110%;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:15px 24px;border:1px solid var(--paper);min-height:48px;transition:background .25s,color .25s,border-color .25s}
-.btn--solid{background:var(--paper);color:var(--ink)}
-.btn--solid:hover{background:var(--lav);border-color:var(--lav)}
-.btn--ghost{color:var(--paper);border-color:color-mix(in srgb,var(--paper) 40%,transparent)}
-.btn--ghost:hover{border-color:var(--paper);background:color-mix(in srgb,var(--paper) 8%,transparent)}
+.btn{display:inline-flex;align-items:center;gap:.6em;font-family:var(--display);font-stretch:90%;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:16px 26px;border:1.5px solid currentColor;min-height:50px;transition:background .25s,color .25s,transform .2s}
+.btn--solid{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.btn--solid:hover{background:var(--violet-2);border-color:var(--violet-2);color:var(--ink)}
+.btn--line{color:var(--paper)}
+.btn--line:hover{background:color-mix(in srgb,var(--paper) 10%,transparent)}
+.btn--violet{background:var(--violet);border-color:var(--violet);color:var(--paper)}
+.btn--violet:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 .btn svg{width:16px;height:16px;flex:none}
-.actions{display:flex;flex-wrap:wrap;gap:12px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
 
-/* ---------- topo ---------- */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--ink) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid color-mix(in srgb,var(--line) 70%,transparent)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:68px}
-.top img{height:22px;width:auto}
-.top nav{display:flex;align-items:center;gap:28px;font-size:14px}
+/* ---------- topo + ticker ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--ink);border-bottom:1px solid var(--ink-2)}
+.top .row{display:flex;align-items:center;justify-content:space-between;gap:24px;height:60px;min-width:0}
+.top .row>*{min-width:0}
+.top .row{padding-left:var(--gut);padding-right:var(--gut-r)}
+.top img{height:19px;width:auto}
+.top nav{display:flex;align-items:center;gap:26px;font-size:13px}
 .top nav a{text-decoration:none;color:var(--mute);transition:color .2s}
 .top nav a:hover{color:var(--paper)}
-.top .btn{padding:10px 16px;min-height:40px;font-size:12px}
+.top .btn{padding:9px 16px;min-height:36px;font-size:11px}
 @media (max-width:760px){.top nav a:not(.btn){display:none}}
 
-/* ---------- 01 abertura: retrato emoldurado, fundo cinza do estúdio assumido ---------- */
-.hero{position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;width:90vw;height:60vw;max-width:1300px;max-height:800px;left:50%;top:22%;transform:translateX(-50%);background:radial-gradient(closest-side,color-mix(in srgb,var(--violet) 26%,transparent),transparent);filter:blur(40px);pointer-events:none;z-index:0}
-.hero .wrap{position:relative;z-index:1;display:grid;gap:clamp(20px,3vw,32px);padding-block:clamp(28px,4vw,48px) clamp(56px,7vw,88px)}
-.hero-mast{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 32px;flex-wrap:wrap}
-.hero-logo{width:min(100%,640px);height:auto}
-.hero-mast .eyebrow{padding-bottom:6px}
-.hero-photo{margin:0;position:relative;overflow:hidden;background:#5d5d60}
-.hero-photo img{width:100%;aspect-ratio:3/2;max-height:76vh;object-fit:cover;object-position:50% 30%;filter:contrast(1.04)}
-.hero-photo figcaption{position:absolute;right:16px;bottom:14px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--paper) 70%,transparent)}
-.hero-bar{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:16px 32px;align-items:center;border-top:1px solid var(--line);padding-top:clamp(18px,2.4vw,28px)}
-.hero-sign{font-family:var(--display);font-stretch:75%;font-weight:300;font-size:clamp(22px,2.4vw,30px);color:var(--lav);letter-spacing:.01em;line-height:1.2}
-.hero-meta{display:flex;justify-content:flex-end;gap:10px 24px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
-.hero-meta span{display:flex;align-items:center;gap:8px}
-.pulse{width:8px;height:8px;border-radius:50%;background:var(--violet);box-shadow:0 0 0 0 var(--violet);animation:pulse 2.2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--violet) 70%,transparent)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
-@media (max-width:900px){
+.ticker{background:var(--violet);color:var(--ink);overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--ink)}
+.ticker .track{display:inline-flex;align-items:center;animation:marquee 26s linear infinite}
+.ticker span{display:inline-flex;align-items:center;gap:.9em;font-family:var(--display);font-stretch:85%;font-weight:700;font-size:13px;letter-spacing:.05em;text-transform:uppercase;padding:9px 0}
+.ticker span::after{content:"✴";margin-left:.9em;opacity:.7}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker .track{animation:none;overflow-x:auto}}
+
+/* ---------- 01 abertura: foto de sangria total, logo colada por cima ---------- */
+.hero{position:relative}
+.hero-photo{position:relative;width:100%;aspect-ratio:4/5;max-height:88vh;overflow:hidden;background:#4b4b4e}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+.hero-photo .eyebrow{position:absolute;top:20px;left:var(--gut);z-index:2;color:var(--paper);background:color-mix(in srgb,var(--ink) 55%,transparent);padding:5px 10px}
+.hero-wordmark{position:absolute;left:var(--gut);right:var(--gut-r);bottom:-2.2vw;z-index:2;width:min(100%,900px)}
+.hero-wordmark img{width:100%;height:auto;filter:drop-shadow(0 6px 0 var(--ink)) drop-shadow(0 -2px 18px rgba(0,0,0,.5))}
+.hero-bar{position:relative;z-index:1;background:var(--ink);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 32px;align-items:center;padding:clamp(28px,5vw,40px) 0 24px;border-bottom:1px solid var(--ink-2)}
+.hero-bar .gx{display:contents}
+.hero-sign{font-family:var(--display);font-stretch:75%;font-weight:300;font-size:clamp(18px,2vw,22px);color:var(--lav);padding-left:var(--gut)}
+.hero-cta{display:flex;flex-direction:column;align-items:flex-end;gap:14px;padding-right:var(--gut-r)}
+@media (max-width:700px){
   .hero-bar{grid-template-columns:1fr}
-  .hero-meta{justify-content:flex-start}
-}
-@media (max-width:600px){
-  .hero-photo img{aspect-ratio:4/5;max-height:none;object-position:50% 20%}
-  .hero-mast .eyebrow{order:-1}
+  .hero-cta{align-items:flex-start;padding-left:var(--gut)}
+  .hero-photo{aspect-ratio:3/4}
 }
 
-/* ---------- seções ---------- */
-section.block{padding-block:clamp(72px,10vw,128px);border-top:1px solid var(--line)}
-.head{display:grid;gap:16px;margin-bottom:clamp(36px,5vw,56px)}
+/* ---------- blocos colados ---------- */
+.panel{position:relative}
+.panel-pad{padding-block:clamp(28px,5vw,48px)}
 
 /* ---------- 02 set em destaque ---------- */
-.feature{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(24px,4vw,56px);align-items:end}
-.player{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:var(--ink-2);text-decoration:none}
-.player img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:grayscale(.35) brightness(.6);transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s}
-.player::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,color-mix(in srgb,var(--violet) 40%,transparent),transparent 55%);mix-blend-mode:screen}
-.player:hover img{transform:scale(1.03);filter:grayscale(.1) brightness(.72)}
-.play{position:absolute;left:28px;bottom:28px;z-index:2;display:flex;align-items:center;gap:16px;font-family:var(--display);font-stretch:110%;font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:14px}
-.play i{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:var(--paper);color:var(--ink);transition:transform .3s}
-.player:hover .play i{transform:scale(1.08)}
-.play svg{width:20px;height:20px;margin-left:3px}
-.feature-info{display:grid;gap:20px}
-.facts{display:grid;gap:0;border-top:1px solid var(--line)}
-.facts div{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
-.facts dt{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding-top:3px}
+.feature{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+.player{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:var(--ink-2);text-decoration:none}
+.player img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;filter:grayscale(.55) brightness(.55) contrast(1.1);transition:transform 1s cubic-bezier(.2,.7,.2,1),filter .5s}
+.player:hover img{transform:scale(1.04);filter:grayscale(.15) brightness(.68) contrast(1.05)}
+.play{position:absolute;left:24px;bottom:24px;z-index:2;display:flex;align-items:center;gap:14px;font-family:var(--display);font-stretch:90%;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:13px}
+.play i{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--violet);color:var(--paper);transition:transform .3s}
+.player:hover .play i{transform:scale(1.1)}
+.play svg{width:18px;height:18px;margin-left:3px}
+.feature-info{background:var(--ink-2);padding:clamp(24px,4vw,40px) var(--gut-r) clamp(24px,4vw,40px) clamp(24px,3vw,40px);display:grid;align-content:center;gap:18px}
+.facts{display:grid;gap:0;border-top:1px solid color-mix(in srgb,var(--paper) 14%,transparent)}
+.facts div{display:grid;grid-template-columns:84px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid color-mix(in srgb,var(--paper) 14%,transparent);font-size:14px}
+.facts dt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);padding-top:3px}
 .facts dd{margin:0}
 .pending{color:var(--lav);font-style:italic}
-@media (max-width:860px){.feature{grid-template-columns:1fr}}
+@media (max-width:820px){.feature{grid-template-columns:1fr}}
+
+/* ---------- cabeçalhos de seção, colados (sem gap embaixo) ---------- */
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:18px;border-bottom:2px solid var(--paper);min-width:0}
+.sec-head .giant{font-size:clamp(28px,5vw,46px);min-width:0;flex:1 1 auto}
+.sec-head .eyebrow{flex:0 0 auto}
 
 /* ---------- 03 sobre ---------- */
-.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,96px);align-items:center}
-.about figure{margin:0;position:relative}
-.about figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 18%}
-.about figure figcaption{position:absolute;left:-1px;bottom:-1px;background:var(--ink);padding:10px 14px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
-.about-text{display:grid;gap:22px}
-.about-text p{max-width:56ch;color:color-mix(in srgb,var(--paper) 86%,var(--ink))}
-.about-text p.first{font-size:clamp(20px,2vw,24px);line-height:1.45;color:var(--paper)}
-@media (max-width:860px){.about{grid-template-columns:1fr}.about figure{max-width:480px}}
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+.about figure{margin:0;aspect-ratio:3/4;overflow:hidden;background:#4b4b4e}
+.about figure img{width:100%;height:100%;object-fit:cover;object-position:50% 14%}
+.about-text{background:var(--violet);color:var(--ink);padding:clamp(28px,4vw,56px) clamp(20px,4vw,56px);display:grid;align-content:center;gap:18px}
+.about-text .eyebrow{color:color-mix(in srgb,var(--ink) 70%,transparent)}
+.about-text p{max-width:46ch;font-size:clamp(16px,1.6vw,19px);line-height:1.5}
+.about-text p.first{font-weight:600;font-size:clamp(19px,2vw,23px);line-height:1.4}
+.about-text .btn{color:var(--ink);border-color:var(--ink)}
+.about-text .btn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+@media (max-width:820px){.about{grid-template-columns:1fr}}
 
-/* ---------- 04 música ---------- */
-.tracks{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.track{display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,220px) auto;align-items:center;gap:24px;padding:18px 0;border-bottom:1px solid var(--line)}
-.track img{width:72px;height:72px;object-fit:cover;object-position:50% 15%}
-.track .t{display:grid;gap:2px;min-width:0}
-.track .t span{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
-.wave{height:36px;width:100%;display:block}
-.track a.go{white-space:nowrap}
-.track:hover .wave{opacity:1}
-@media (max-width:760px){
-  .track{grid-template-columns:56px minmax(0,1fr);gap:14px 16px}
-  .track img{width:56px;height:56px}
-  .wave{display:none}
-  .track a.go{grid-column:1/-1}
-}
+/* ---------- 04 música: tipografia gigante nas faixas, como o lerocks ---------- */
+.tracks{list-style:none;margin:0;padding:0}
+.track{display:block;border-bottom:1px solid var(--ink-2);padding:clamp(14px,2.4vw,22px) 0;text-decoration:none;position:relative;overflow:hidden}
+.track-row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:baseline;gap:14px;min-width:0}
+.track-row span.n{font-family:var(--mono);font-size:13px;color:var(--violet-2)}
+.track-title{font-family:var(--display);font-stretch:78%;font-weight:800;text-transform:uppercase;letter-spacing:-.005em;font-size:clamp(28px,6vw,64px);line-height:1;color:color-mix(in srgb,var(--paper) 55%,transparent);transition:color .3s,transform .4s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.track:hover .track-title{color:var(--paper);transform:translateX(6px)}
+.track-tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.track-meta{display:flex;justify-content:space-between;padding-left:58px;padding-top:4px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.track-meta .go{color:var(--lav)}
+.track:hover .track-meta .go{color:var(--paper)}
 
-/* ---------- 05 galeria ---------- */
-.gallery{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}
-.gallery button{all:unset;cursor:zoom-in;position:relative;overflow:hidden;background:var(--ink-2)}
-.gallery button:focus-visible{outline:2px solid var(--lav);outline-offset:3px}
-.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-.gallery button:hover img{transform:scale(1.035)}
-.g1{grid-column:1/6;grid-row:span 2;aspect-ratio:2/3}
-.g2{grid-column:6/9;aspect-ratio:3/4}
-.g3{grid-column:9/13;aspect-ratio:1/1}
-.g4{grid-column:6/10;aspect-ratio:1/1}
-.g5{grid-column:10/13;aspect-ratio:3/4}
-.g6{grid-column:1/13;aspect-ratio:21/9}
-.g6 img{object-position:50% 22%}
-@media (max-width:760px){
-  .gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .gallery button{grid-column:auto!important;grid-row:auto!important;aspect-ratio:3/4!important}
-  .g1{grid-column:1/-1!important;aspect-ratio:4/5!important}
-  .g6{grid-column:1/-1!important;aspect-ratio:4/3!important}
-}
+/* ---------- 05 galeria: fita de fotos colada ---------- */
+.filmstrip{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;overflow-x:auto;scrollbar-width:none}
+.filmstrip::-webkit-scrollbar{display:none}
+.filmstrip button{all:unset;cursor:zoom-in;position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--ink-2);min-width:150px}
+.filmstrip button:focus-visible{outline:2px solid var(--lav);outline-offset:-3px}
+.filmstrip img{width:100%;height:100%;object-fit:cover;filter:grayscale(.3) contrast(1.05);transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .4s}
+.filmstrip button:hover img{transform:scale(1.06);filter:grayscale(0) contrast(1)}
+.filmstrip .tag{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;padding:10px 12px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:linear-gradient(to top,rgba(0,0,0,.55),transparent)}
 dialog{padding:0;border:0;background:transparent;max-width:min(92vw,820px);max-height:92vh;color:var(--paper)}
 dialog::backdrop{background:color-mix(in srgb,var(--ink) 94%,transparent)}
 dialog img{max-height:82vh;width:auto;margin-inline:auto}
 .lb-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:12px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--mute)}
-.lb-bar button{background:none;border:1px solid var(--line);color:var(--paper);font:inherit;padding:10px 14px;cursor:pointer;min-height:44px}
+.lb-bar button{all:unset;background:none;border:1px solid var(--ink-2);color:var(--paper);font:inherit;padding:10px 14px;cursor:pointer;min-height:44px}
 .lb-bar button:hover{border-color:var(--paper)}
 
-/* ---------- 06 bookings ---------- */
-.book{position:relative;overflow:hidden}
-.book::before{content:"";position:absolute;left:-20vw;bottom:-40vw;width:80vw;height:80vw;background:radial-gradient(closest-side,color-mix(in srgb,var(--violet) 28%,transparent),transparent);filter:blur(30px);pointer-events:none}
-.book .wrap{position:relative;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,80px);align-items:end}
-.book h2{font-size:clamp(38px,6.4vw,84px)}
-.contact{display:grid;gap:0;border-top:1px solid var(--line)}
-.contact div{display:grid;gap:4px;padding:16px 0;border-bottom:1px solid var(--line)}
-.contact dt{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
-.contact dd{margin:0;font-size:18px;user-select:all}
-@media (max-width:860px){.book .wrap{grid-template-columns:1fr}}
+/* ---------- 06 bookings: faixa violeta cheia ---------- */
+.book{background:var(--violet);color:var(--ink)}
+.book .giant{font-size:clamp(40px,8vw,104px);color:var(--ink)}
+.book-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,56px);align-items:end;padding-block:clamp(32px,6vw,64px)}
+.book-lead{font-size:clamp(16px,1.6vw,19px);max-width:46ch;color:color-mix(in srgb,var(--ink) 80%,transparent)}
+.book .btn--solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.book .btn--solid:hover{background:var(--paper);color:var(--ink)}
+.book .btn--line{color:var(--ink);border-color:var(--ink)}
+.book .btn--line:hover{background:color-mix(in srgb,var(--ink) 10%,transparent)}
+.contact{display:grid;gap:0;border-top:1.5px solid var(--ink)}
+.contact div{display:grid;gap:3px;padding:14px 0;border-bottom:1.5px solid var(--ink)}
+.contact dt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.contact dd{margin:0;font-size:17px;user-select:all;font-weight:600}
+@media (max-width:820px){.book-grid{grid-template-columns:1fr}}
 
 /* ---------- rodapé ---------- */
-footer{border-top:1px solid var(--line);padding-block:48px calc(48px + env(safe-area-inset-bottom,0px))}
-footer .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center}
-footer img{height:28px;width:auto;opacity:.9}
-.social{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;font-size:14px}
+footer{padding-block:28px calc(28px + env(safe-area-inset-bottom,0px))}
+footer .row{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+footer img{height:22px;width:auto;opacity:.85}
+.social{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px}
 .social a{text-decoration:none;color:var(--mute)}
 .social a:hover{color:var(--paper)}
-.legal{font-size:13px;color:var(--mute);text-align:right}
-@media (max-width:760px){footer .wrap{grid-template-columns:1fr;justify-items:start}.social{justify-content:flex-start}.legal{text-align:left}}
+.legal{font-size:12px;color:var(--mute)}
 
-/* ---------- notas de direção (camada de referência) ---------- */
-.note{display:none;margin-top:18px;max-width:640px;border-left:2px solid var(--violet);padding:10px 14px;background:color-mix(in srgb,var(--violet) 10%,transparent);font-size:13.5px;line-height:1.5;color:var(--lav)}
-.note b{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:4px;color:var(--paper)}
-body.notes .note{display:block}
-.toggle{position:fixed;z-index:70;left:calc(16px + env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px;background:var(--ink-2);color:var(--paper);border:1px solid var(--line);font-family:var(--mono);font-size:12px;letter-spacing:.08em;padding:10px 14px;cursor:pointer;min-height:44px}
-.toggle i{width:28px;height:16px;border-radius:8px;background:var(--line);position:relative;transition:background .2s}
-.toggle i::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--paper);transition:transform .2s}
+/* ---------- flutuantes ---------- */
+.toggle,.listen{position:fixed;z-index:70;display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:11px 15px;min-height:44px;text-decoration:none}
+.toggle{left:calc(16px + env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink-2);color:var(--paper);border:1px solid color-mix(in srgb,var(--paper) 16%,transparent);cursor:pointer}
+.toggle i{width:26px;height:15px;border-radius:8px;background:color-mix(in srgb,var(--paper) 16%,transparent);position:relative;transition:background .2s}
+.toggle i::after{content:"";position:absolute;top:2px;left:2px;width:11px;height:11px;border-radius:50%;background:var(--paper);transition:transform .2s}
 body.notes .toggle i{background:var(--violet)}
-body.notes .toggle i::after{transform:translateX(12px)}
+body.notes .toggle i::after{transform:translateX(11px)}
+.listen{right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--violet);color:var(--ink);border:1px solid var(--violet);font-weight:600;text-transform:uppercase}
+.listen:hover{background:var(--paper);border-color:var(--paper)}
+.listen .dot{width:7px;height:7px;border-radius:50%;background:var(--ink);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ink) 60%,transparent)}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
 
-/* entradas suaves (conteúdo sempre visível em repouso) */
+/* ---------- notas de direção ---------- */
+.note{display:none;border-top:1px dashed color-mix(in srgb,var(--paper) 20%,transparent);margin-top:16px;padding-top:12px;font-size:13px;line-height:1.5;color:var(--lav)}
+.note b{font-family:var(--mono);font-weight:500;font-size:10px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:4px;color:var(--paper)}
+.about-text .note,.book .note{color:color-mix(in srgb,var(--ink) 75%,transparent);border-top-color:color-mix(in srgb,var(--ink) 25%,transparent)}
+.about-text .note b,.book .note b{color:var(--ink)}
+body.notes .note{display:block}
+
 @media (prefers-reduced-motion:no-preference){
-  .rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
-  .rise.d1{animation-delay:.08s}.rise.d2{animation-delay:.16s}.rise.d3{animation-delay:.24s}.rise.d4{animation-delay:.32s}
-  @keyframes rise{from{transform:translateY(14px);opacity:.001}to{transform:none;opacity:1}}
-  .hero-photo img{animation:settle 1.6s cubic-bezier(.2,.7,.2,1) both}
-  @keyframes settle{from{transform:scale(1.04);opacity:.001}to{transform:none;opacity:1}}
+  .rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+  .rise.d1{animation-delay:.08s}.rise.d2{animation-delay:.16s}
+  @keyframes rise{from{transform:translateY(12px);opacity:.001}to{transform:none;opacity:1}}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
+</head>
+<body>
 
 <header class="top">
-  <div class="wrap">
-    <a href="#inicio" aria-label="Bárbara Thomaz, início"><img src="img/Logo.png" alt="Bárbara Thomaz" width="1074" height="232"></a>
+  <div class="row">
+    <a href="#inicio" aria-label="Bárbara Thomaz, início"><img src="img/Logo.png" alt="Bárbara Thomaz"></a>
     <nav aria-label="Principal">
       <a href="#set">Set</a>
       <a href="#sobre">Sobre</a>
@@ -209,172 +219,169 @@ body.notes .toggle i::after{transform:translateX(12px)}
     </nav>
   </div>
 </header>
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    <span>DJ · Melodic Techno</span><span>Disponível para bookings</span><span>Spotify · SoundCloud · YouTube</span>
+    <span>DJ · Melodic Techno</span><span>Disponível para bookings</span><span>Spotify · SoundCloud · YouTube</span>
+  </div>
+</div>
 
 <main id="inicio">
   <!-- 01 ABERTURA -->
   <section class="hero" aria-labelledby="hero-name">
-    <div class="wrap">
-      <div class="hero-mast">
-        <h1 id="hero-name" class="rise" style="margin:0"><img class="hero-logo" src="img/Logo.png" alt="Bárbara Thomaz" width="1074" height="232"></h1>
-        <p class="eyebrow rise d1">DJ <span aria-hidden="true">•</span> Melodic Techno</p>
-      </div>
-      <figure class="hero-photo rise d1">
-        <img src="img/hero-retrato.jpg" alt="Retrato de Bárbara Thomaz de jaqueta de couro preta e óculos escuros, em fundo cinza de estúdio" width="1800" height="1200" fetchpriority="high">
-      </figure>
-      <div class="hero-bar rise d2">
-        <p class="hero-sign">A música me faz sentir viva.</p>
+    <figure class="hero-photo rise" style="margin:0">
+      <p class="eyebrow">DJ · Melodic Techno</p>
+      <img src="img/hero-full.jpg" alt="Retrato de Bárbara Thomaz de jaqueta de couro preta e óculos escuros, em fundo cinza de estúdio" width="1400" height="1750" fetchpriority="high">
+      <div class="hero-wordmark"><img src="img/Logo.png" alt="" aria-hidden="true"></div>
+    </figure>
+    <div class="hero-bar rise d1">
+      <p class="gx hero-sign">A música me faz sentir viva.</p>
+      <div class="hero-cta">
         <div class="actions">
-          <a class="btn btn--solid" href="#set">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Ouça meus sets</a>
-          <a class="btn btn--ghost" href="#bookings">Bookings</a>
+          <a class="btn btn--solid" href="#set"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Ouça meus sets</a>
+          <a class="btn btn--line" href="#bookings">Bookings</a>
         </div>
-        <div class="hero-meta"><span><i class="pulse" aria-hidden="true"></i>Disponível para bookings</span><span>Spotify · SoundCloud · YouTube</span></div>
       </div>
-      <div class="note"><b>Ref. abertura · Charlotte de Witte</b>Logo grande em cima, retrato do rosto emoldurado em formato largo e o fundo cinza do estúdio assumido, sem degradê para esconder. Abaixo da foto, uma faixa com a frase-assinatura, as duas ações e o status. O violeta fica só como luz difusa ao redor da moldura. No celular, a foto vira 4:5 com o rosto centralizado.</div>
     </div>
+    <div class="gx"><div class="note"><b>Ref. abertura · Lerock's</b>Foto de sangria total (sem moldura, sem card) e a logo colada por cima, sobrepondo a borda da foto — igual ao wordmark do Lerock's sobre o ombro dele. A faixa corrida no topo (marquee) substitui o texto de status solto. Tudo toca: a foto encosta direto na barra preta de baixo, sem respiro entre os blocos.</div></div>
   </section>
 
   <!-- 02 SET EM DESTAQUE -->
-  <section class="block" id="set" aria-labelledby="set-t">
-    <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Set em destaque</p>
-        <h2 id="set-t">Entre no meu universo sonoro.</h2>
-      </div>
-      <div class="feature">
-        <a class="player" href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener">
-          <img src="img/IMG_7343.jpg" alt="" loading="lazy" width="1100" height="1648">
-          <span class="play"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></i>Assistir ao set</span>
-        </a>
-        <div class="feature-info">
-          <h3>B2B Lerock’s x Bárbara Thomaz</h3>
-          <dl class="facts">
-            <div><dt>Local</dt><dd>New York Pub</dd></div>
-            <div><dt>Data</dt><dd class="pending">a confirmar</dd></div>
-            <div><dt>Onde ver</dt><dd>YouTube</dd></div>
-          </dl>
-          <p class="muted" style="font-size:15px">Um registro ao vivo da pista. Abre no YouTube, sem carregar o player aqui.</p>
-        </div>
-      </div>
-      <div class="note"><b>Ref. set em destaque</b>Miniatura ampla 16:9 com um único botão. A imagem aqui é provisória: trocar pelo frame real do vídeo. Se houver um set solo aprovado, ele assume este espaço e o B2B vai para o acervo. Nada de duração ou visualizações inventadas.</div>
+  <section class="panel" id="set" aria-labelledby="set-t">
+    <div class="gx sec-head">
+      <h2 id="set-t" class="giant">Entre no<br>universo sonoro.</h2>
+      <p class="eyebrow">01 · Set em destaque</p>
     </div>
+    <div class="feature">
+      <a class="player" href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener">
+        <img src="img/IMG_7343.jpg" alt="" loading="lazy" width="1100" height="1648">
+        <span class="play"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></i>Assistir ao set</span>
+      </a>
+      <div class="feature-info">
+        <h3 class="disp" style="font-stretch:85%;font-weight:700;font-size:22px;text-transform:uppercase;margin:0">B2B Lerock's × Bárbara Thomaz</h3>
+        <dl class="facts">
+          <div><dt>Local</dt><dd>New York Pub</dd></div>
+          <div><dt>Data</dt><dd class="pending">a confirmar</dd></div>
+          <div><dt>Onde ver</dt><dd>YouTube</dd></div>
+        </dl>
+        <p class="muted" style="font-size:14px">Um registro ao vivo da pista. Abre no YouTube, sem carregar o player aqui.</p>
+      </div>
+    </div>
+    <div class="gx"><div class="note"><b>Ref. set</b>Cabeçalho colado direto na faixa com fundo escuro, sem a sobra de espaço de antes. A miniatura é provisória — trocar pelo frame real do vídeo. Se houver set solo aprovado, ele assume o lugar e o B2B vai para o acervo.</div></div>
   </section>
 
   <!-- 03 SOBRE -->
-  <section class="block" id="sobre" aria-labelledby="sobre-t">
-    <div class="wrap about">
+  <section class="panel" id="sobre" aria-labelledby="sobre-t">
+    <div class="about">
       <figure>
         <img src="img/IMG_7496.jpg" alt="Retrato de Bárbara Thomaz em conjunto de cetim dourado" loading="lazy" width="1100" height="1648">
-        <figcaption>Bárbara Thomaz</figcaption>
       </figure>
       <div class="about-text">
-        <p class="eyebrow">Sobre</p>
-        <h2 id="sobre-t">Energia, intensidade e emoção.</h2>
+        <p class="eyebrow">02 · Sobre a artista</p>
         <p class="first">Sou Bárbara Thomaz, e a música me faz sentir viva. Encontrei no Melodic Techno uma forma de unir energia, intensidade e emoção, e de compartilhar essa conexão com quem está na pista.</p>
         <p>Cada set é uma jornada para viver o presente, dançar com liberdade e se deixar levar pelo som. É essa experiência que quero dividir: música que aproxima, desperta sensações e cria momentos que ficam.</p>
-        <div class="actions" style="margin-top:8px">
-          <a class="btn btn--ghost" href="https://drive.google.com/drive/folders/17zc0Qg9nRIW7BBWXx10rjM_WAhC-Uf4g" target="_blank" rel="noopener">
+        <div class="actions" style="margin-top:4px">
+          <a class="btn btn--line" href="https://drive.google.com/drive/folders/17zc0Qg9nRIW7BBWXx10rjM_WAhC-Uf4g" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Press kit</a>
         </div>
-        <div class="note"><b>Ref. sobre</b>Retrato ao lado de dois parágrafos curtos, em primeira pessoa, alinhados à esquerda. Texto do briefing, ainda para aprovação da Bárbara. Sem anos de carreira, cidades ou números de público até ela informar.</div>
+        <div class="note"><b>Ref. sobre</b>A foto encosta direto no bloco de texto, sem coluna de ar entre os dois — o violeta cheio no painel de texto dá o contraste, no lugar do fundo preto neutro. Texto do briefing, ainda para aprovação da Bárbara. Sem anos de carreira, cidades ou números de público até ela informar.</div>
       </div>
     </div>
   </section>
 
   <!-- 04 MÚSICA -->
-  <section class="block" id="musica" aria-labelledby="musica-t">
-    <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Música e sets</p>
-        <h2 id="musica-t">Música para sentir.</h2>
-      </div>
-      <ul class="tracks">
-        <li class="track">
-          <img src="img/IMG_7344.jpg" alt="" loading="lazy" width="768" height="1151">
-          <div class="t"><span>Perfil de artista · Spotify</span><h3>Bárbara Thomaz</h3></div>
-          <canvas class="wave" data-seed="3" aria-hidden="true"></canvas>
-          <a class="btn btn--ghost go" href="https://open.spotify.com/artist/5Luy0WFYQ2JGezy5EyTBnx" target="_blank" rel="noopener">Ouvir no Spotify</a>
-        </li>
-        <li class="track">
-          <img src="img/IMG_7330.jpg" alt="" loading="lazy" width="1100" height="1648">
-          <div class="t"><span>Playlist · SoundCloud</span><h3>Who Is Bárbara</h3></div>
-          <canvas class="wave" data-seed="7" aria-hidden="true"></canvas>
-          <a class="btn btn--ghost go" href="https://soundcloud.com/dj-barbara-thomaz/sets/who-is-barbara" target="_blank" rel="noopener">Ouvir no SoundCloud</a>
-        </li>
-        <li class="track">
-          <img src="img/IMG_7351.jpg" alt="" loading="lazy" width="768" height="1151">
-          <div class="t"><span>Sets e vídeos · YouTube</span><h3>Canal Bárbara Thomaz</h3></div>
-          <canvas class="wave" data-seed="11" aria-hidden="true"></canvas>
-          <a class="btn btn--ghost go" href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener">Assistir no YouTube</a>
-        </li>
-      </ul>
-      <div class="note"><b>Ref. música</b>Lista uniforme: capa, tipo de conteúdo, título e uma ação por linha. Nenhum player embutido carregando junto com a página; o link abre a plataforma. “Who Is Bárbara” aparece como playlist até confirmarmos o que é. As capas aqui são fotos de estúdio provisórias.</div>
+  <section class="panel" id="musica" aria-labelledby="musica-t">
+    <div class="gx sec-head">
+      <h2 id="musica-t" class="giant">Música<br>para sentir.</h2>
+      <p class="eyebrow">03 · Música e sets</p>
     </div>
+    <ul class="gx tracks">
+      <li>
+        <a class="track" href="https://open.spotify.com/artist/5Luy0WFYQ2JGezy5EyTBnx" target="_blank" rel="noopener">
+          <div class="track-row"><span class="n">01</span><span class="track-title">Bárbara Thomaz</span><span class="track-tag">Spotify</span></div>
+          <div class="track-meta"><span>Perfil de artista</span><span class="go">Ouvir →</span></div>
+        </a>
+      </li>
+      <li>
+        <a class="track" href="https://soundcloud.com/dj-barbara-thomaz/sets/who-is-barbara" target="_blank" rel="noopener">
+          <div class="track-row"><span class="n">02</span><span class="track-title">Who Is Bárbara</span><span class="track-tag">SoundCloud</span></div>
+          <div class="track-meta"><span>Playlist</span><span class="go">Ouvir →</span></div>
+        </a>
+      </li>
+      <li>
+        <a class="track" href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener">
+          <div class="track-row"><span class="n">03</span><span class="track-title">Canal Bárbara Thomaz</span><span class="track-tag">YouTube</span></div>
+          <div class="track-meta"><span>Sets e vídeos</span><span class="go">Assistir →</span></div>
+        </a>
+      </li>
+    </ul>
+    <div class="gx"><div class="note"><b>Ref. música · Lerock's</b>Título de cada faixa em tipografia gigante, condensada — a mesma ideia do "RAÍZES NO UNDERGROUND" e da lista de faixas do Lerock's, só que aqui cada linha é um link de verdade pra plataforma, não uma faixa que toca ali. Nenhum player embutido carrega junto com a página. "Who Is Bárbara" segue como playlist até confirmarmos o que é.</div></div>
   </section>
 
   <!-- 05 GALERIA -->
-  <section class="block" id="galeria" aria-labelledby="galeria-t">
-    <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Galeria</p>
-        <h2 id="galeria-t">Em cena.</h2>
-      </div>
-      <div class="gallery" id="gal">
-        <button class="g1" aria-label="Ampliar foto 1 de 6"><img src="img/IMG_7490.jpg" alt="Bárbara de costas, conjunto de cetim dourado, olhando por cima do ombro" loading="lazy" width="1100" height="1648"></button>
-        <button class="g2" aria-label="Ampliar foto 2 de 6"><img src="img/IMG_7350.jpg" alt="Bárbara de blazer preto e óculos vermelhos, braços cruzados" loading="lazy" width="768" height="1151"></button>
-        <button class="g3" aria-label="Ampliar foto 3 de 6"><img src="img/IMG_7346.jpg" alt="Bárbara de jaqueta de couro, ajustando os óculos escuros" loading="lazy" width="768" height="1151" style="object-position:50% 15%"></button>
-        <button class="g4" aria-label="Ampliar foto 4 de 6"><img src="img/IMG_7341.jpg" alt="Bárbara de vestido longo preto, mãos na cabeça" loading="lazy" width="768" height="1151" style="object-position:50% 12%"></button>
-        <button class="g5" aria-label="Ampliar foto 5 de 6"><img src="img/IMG_7359.jpg" alt="Bárbara de vestido preto, mãos na cintura" loading="lazy" width="768" height="1151" style="object-position:50% 15%"></button>
-        <button class="g6" aria-label="Ampliar foto 6 de 6"><img src="img/IMG_7345.jpg" alt="Bárbara de jaqueta de couro e óculos vermelhos" loading="lazy" width="768" height="1151"></button>
-      </div>
-      <div class="note"><b>Ref. galeria</b>Grade editorial com escalas diferentes, no lugar do carrossel pequeno. Clique abre a foto ampliada (setas do teclado navegam, Esc fecha). Quando houver fotos de apresentações reais, elas entram alternadas com os retratos de estúdio.</div>
+  <section class="panel" id="galeria" aria-labelledby="galeria-t">
+    <div class="gx sec-head">
+      <h2 id="galeria-t" class="giant" style="font-size:clamp(24px,4vw,38px)">Em cena.</h2>
+      <p class="eyebrow">04 · Galeria</p>
     </div>
+    <div class="filmstrip" id="gal">
+      <button aria-label="Ampliar foto 1 de 8"><img src="img/IMG_7490.jpg" alt="Bárbara de costas, conjunto de cetim dourado" loading="lazy" width="1100" height="1648"><span class="tag"><span>01</span><span>Estúdio</span></span></button>
+      <button aria-label="Ampliar foto 2 de 8"><img src="img/IMG_7350.jpg" alt="Bárbara de blazer preto e óculos vermelhos" loading="lazy" width="768" height="1151"><span class="tag"><span>02</span><span>Retrato</span></span></button>
+      <button aria-label="Ampliar foto 3 de 8"><img src="img/IMG_7346.jpg" alt="Bárbara de jaqueta de couro, ajustando os óculos" loading="lazy" width="768" height="1151" style="object-position:50% 15%"><span class="tag"><span>03</span><span>Jaqueta</span></span></button>
+      <button aria-label="Ampliar foto 4 de 8"><img src="img/IMG_7341.jpg" alt="Bárbara de vestido longo preto" loading="lazy" width="768" height="1151" style="object-position:50% 12%"><span class="tag"><span>04</span><span>Vestido</span></span></button>
+      <button aria-label="Ampliar foto 5 de 8"><img src="img/IMG_7359.jpg" alt="Bárbara de vestido preto, mãos na cintura" loading="lazy" width="768" height="1151" style="object-position:50% 15%"><span class="tag"><span>05</span><span>Estúdio</span></span></button>
+      <button aria-label="Ampliar foto 6 de 8"><img src="img/IMG_7345.jpg" alt="Bárbara de jaqueta de couro e óculos vermelhos" loading="lazy" width="768" height="1151"><span class="tag"><span>06</span><span>Retrato</span></span></button>
+      <button aria-label="Ampliar foto 7 de 8"><img src="img/IMG_7344.jpg" alt="Bárbara de vestido preto" loading="lazy" width="768" height="1151"><span class="tag"><span>07</span><span>Estúdio</span></span></button>
+      <button aria-label="Ampliar foto 8 de 8"><img src="img/IMG_7330.jpg" alt="Bárbara de vestido metálico prateado" loading="lazy" width="1100" height="1648"><span class="tag"><span>08</span><span>Estúdio</span></span></button>
+    </div>
+    <div class="gx"><div class="note"><b>Ref. galeria · Lerock's</b>Fita horizontal de fotos coladas, sem espaço entre elas, com número e legenda curta sobre a imagem — igual à fita "01 FONES · 02 RETRATO" do Lerock's. Rola na horizontal no celular. Quando houver fotos de apresentações reais, entram alternadas com os retratos de estúdio.</div></div>
   </section>
 
   <!-- 06 BOOKINGS -->
-  <section class="block book" id="bookings" aria-labelledby="book-t">
-    <div class="wrap">
-      <div style="display:grid;gap:24px">
-        <p class="eyebrow">Bookings e press kit</p>
-        <h2 id="book-t">Leve essa experiência para o seu evento.</h2>
-        <p class="lead muted">Para bookings e informações sobre apresentações, entre em contato.</p>
+  <section class="book" id="bookings" aria-labelledby="book-t">
+    <div class="gx book-grid">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow" style="color:color-mix(in srgb,var(--ink) 65%,transparent)">05 · Bookings e press kit</p>
+        <h2 id="book-t" class="giant">Leve essa<br>experiência<br>pro seu evento.</h2>
+        <p class="book-lead">Para bookings e informações sobre apresentações, entre em contato.</p>
         <div class="actions">
           <a class="btn btn--solid" href="https://wa.me/5519989005660" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>Falar sobre uma apresentação</a>
-          <a class="btn btn--ghost" href="https://drive.google.com/drive/folders/17zc0Qg9nRIW7BBWXx10rjM_WAhC-Uf4g" target="_blank" rel="noopener">Baixar press kit</a>
+          <a class="btn btn--line" href="https://drive.google.com/drive/folders/17zc0Qg9nRIW7BBWXx10rjM_WAhC-Uf4g" target="_blank" rel="noopener">Baixar press kit</a>
         </div>
       </div>
       <dl class="contact">
         <div><dt>WhatsApp</dt><dd>(19) 98900-5660</dd></div>
-        <div><dt>E-mail profissional</dt><dd class="pending">a confirmar</dd></div>
-        <div><dt>Responsável</dt><dd class="pending">a confirmar</dd></div>
+        <div><dt>E-mail profissional</dt><dd style="font-style:italic;font-weight:500">a confirmar</dd></div>
+        <div><dt>Responsável</dt><dd style="font-style:italic;font-weight:500">a confirmar</dd></div>
         <div><dt>Instagram</dt><dd>@bathomaz</dd></div>
       </dl>
     </div>
-    <div class="wrap"><div class="note"><b>Ref. bookings</b>Contato como ação principal, com nome do canal escrito, em vez de só ícones no rodapé. O número vem do site atual (lá o link está sem o 55; aqui já corrigido). E-mail e responsável ainda pendentes.</div></div>
+    <div class="gx"><div class="note"><b>Ref. bookings</b>Faixa violeta cheia de ponta a ponta, sem moldura — a mesma função do bloco vermelho "WELCOME TO NEVERLAND" do Lerock's, só que carregando o convite pra contratar em vez do álbum. O número do WhatsApp vem do site atual (lá está sem o 55; aqui já corrigido).</div></div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">
-    <img src="img/Logo.png" alt="Bárbara Thomaz" width="1074" height="232" loading="lazy">
+  <div class="gx row">
+    <img src="img/Logo.png" alt="Bárbara Thomaz" loading="lazy">
     <nav class="social" aria-label="Redes">
       <a href="https://www.instagram.com/bathomaz" target="_blank" rel="noopener">Instagram</a>
       <a href="https://open.spotify.com/artist/5Luy0WFYQ2JGezy5EyTBnx" target="_blank" rel="noopener">Spotify</a>
       <a href="https://soundcloud.com/dj-barbara-thomaz" target="_blank" rel="noopener">SoundCloud</a>
       <a href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener">YouTube</a>
     </nav>
-    <p class="legal">© 2026 Bárbara Thomaz<br>Site por The Sign</p>
+    <p class="legal">© 2026 Bárbara Thomaz · Site por The Sign</p>
   </div>
 </footer>
 
-<button class="toggle" id="toggle" aria-pressed="true"><i aria-hidden="true"></i>Notas de direção</button>
+<button class="toggle" id="toggle" aria-pressed="true"><i aria-hidden="true"></i>Notas</button>
+<a class="listen" href="https://open.spotify.com/artist/5Luy0WFYQ2JGezy5EyTBnx" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>Ouvir no Spotify</a>
 
 <dialog id="lb" aria-label="Foto ampliada">
   <img id="lb-img" src="" alt="">
   <div class="lb-bar">
     <button id="lb-prev" aria-label="Foto anterior">←</button>
-    <span id="lb-count">1 / 6</span>
+    <span id="lb-count">1 / 8</span>
     <button id="lb-next" aria-label="Próxima foto">→</button>
     <button id="lb-close">Fechar</button>
   </div>
@@ -382,29 +389,11 @@ body.notes .toggle i::after{transform:translateX(12px)}
 
 <script>
 (function(){
-  // notas de direção
   const b=document.body, t=document.getElementById('toggle');
   let on=true; try{ if(localStorage.getItem('bt-notes')==='0') on=false }catch(e){}
   const set=v=>{on=v;b.classList.toggle('notes',v);t.setAttribute('aria-pressed',v);try{localStorage.setItem('bt-notes',v?'1':'0')}catch(e){}};
   set(on); t.addEventListener('click',()=>set(!on));
 
-  // ondas decorativas (forma fixa por linha, desenhada uma vez)
-  const css=getComputedStyle(document.documentElement);
-  const lav=css.getPropertyValue('--lav').trim(), vio=css.getPropertyValue('--violet').trim();
-  document.querySelectorAll('canvas.wave').forEach(c=>{
-    const draw=()=>{
-      const w=c.clientWidth,h=c.clientHeight; if(!w) return;
-      const d=devicePixelRatio||1; c.width=w*d;c.height=h*d;
-      const x=c.getContext('2d'); x.scale(d,d);
-      let s=+c.dataset.seed; const r=()=>(s=(s*9301+49297)%233280)/233280;
-      const n=Math.floor(w/4), g=x.createLinearGradient(0,0,w,0); g.addColorStop(0,vio); g.addColorStop(1,lav);
-      x.fillStyle=g;
-      for(let i=0;i<n;i++){const env=Math.sin(Math.PI*i/n)*.7+.3;const a=Math.max(2,(r()*.7+.3)*env*h);x.fillRect(i*4,(h-a)/2,2,a)}
-    };
-    draw(); new ResizeObserver(draw).observe(c);
-  });
-
-  // galeria ampliada
   const btns=[...document.querySelectorAll('#gal button')], dlg=document.getElementById('lb'), im=document.getElementById('lb-img'), cnt=document.getElementById('lb-count');
   let i=0, last=null;
   const show=k=>{i=(k+btns.length)%btns.length;const s=btns[i].querySelector('img');im.src=s.src;im.alt=s.alt;cnt.textContent=(i+1)+' / '+btns.length};
@@ -417,3 +406,5 @@ body.notes .toggle i::after{transform:translateX(12px)}
   dlg.addEventListener('close',()=>last&&last.focus());
 })();
 </script>
+</body>
+</html>
