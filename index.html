@@ -167,22 +167,22 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 .lb-bar button{all:unset;border:1px solid var(--line);color:var(--paper);font:inherit;padding:9px 13px;cursor:pointer;min-height:40px}
 .lb-bar button:hover{border-color:var(--paper)}
 
-/* ---------- 05 MÚSICA: lista enxuta ---------- */
-.tracks{list-style:none;margin:clamp(24px,4vw,40px) 0 0;padding:0}
-.track{display:grid;grid-template-columns:40px minmax(0,1fr) auto auto;align-items:center;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:background .2s}
-.track:hover{background:color-mix(in srgb,var(--paper) 4%,transparent)}
-.track .n{font-family:var(--mono);font-size:11px;color:var(--mute)}
-.track .ti{min-width:0}
-.track .ti b{display:block;font-family:var(--body);font-weight:600;font-size:17px;color:var(--paper);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.track .ti span{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
-.track .plat{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
-.track .go{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:6px}
-.track .go .sq{width:5px;height:5px;background:var(--violet-2)}
-@media (max-width:640px){
-  .track{grid-template-columns:28px minmax(0,1fr);row-gap:6px}
-  .track .plat{display:none}
-  .track .go{grid-column:1/-1;justify-content:flex-start;padding-left:46px}
-}
+/* ---------- 05 MÚSICA: grade editorial, foto de fundo em cada item ---------- */
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(24px,4vw,40px)}
+.mtile{all:unset;cursor:pointer;position:relative;display:block;aspect-ratio:3/4;overflow:hidden;background:var(--ink-2)}
+.mtile:focus-visible{outline:1.5px solid var(--violet-2);outline-offset:-3px}
+.mtile img{width:100%;height:100%;object-fit:cover;filter:grayscale(.5) brightness(.55) contrast(1.05);transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .4s}
+.mtile:hover img{transform:scale(1.045);filter:grayscale(.1) brightness(.68)}
+.mtile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,.05) 55%)}
+.mtile .mt-top{position:absolute;top:0;left:0;right:0;z-index:2;display:flex;justify-content:space-between;padding:14px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.mtile .mt-top .n{color:var(--violet-2)}
+.mtile .mt-top .plat{color:var(--paper);opacity:.75}
+.mtile .mt-bot{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px}
+.mtile .mt-bot b{display:block;font-family:var(--body);font-weight:600;font-size:clamp(16px,1.6vw,19px);color:var(--paper);margin-bottom:3px}
+.mtile .mt-bot .kind{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.mtile .mt-bot .go{margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--paper)}
+.mtile .mt-bot .go .sq{width:5px;height:5px;background:var(--violet-2)}
+@media (max-width:760px){.mgrid{grid-template-columns:1fr}.mtile{aspect-ratio:16/10}}
 
 /* ---------- 06 BOOKINGS ---------- */
 .book-grid{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:clamp(24px,4vw,56px);margin-top:clamp(28px,4vw,44px)}
@@ -336,27 +336,24 @@ body.notes .note{display:block}
   <section class="panel" id="musica" aria-labelledby="musica-t">
     <div class="gx">
       <div class="sec-label"><span class="t mn" id="musica-t">Música — sets e lançamentos</span><span class="rule"></span><span class="mark" aria-hidden="true"></span></div>
-      <ul class="tracks">
-        <li><a class="track" href="https://open.spotify.com/artist/5Luy0WFYQ2JGezy5EyTBnx" target="_blank" rel="noopener">
-          <span class="n mn">01</span>
-          <span class="ti"><b>Bárbara Thomaz</b><span>Perfil de artista</span></span>
-          <span class="plat">Spotify</span>
-          <span class="go">Ouvir<span class="sq" aria-hidden="true"></span></span>
-        </a></li>
-        <li><a class="track" href="https://soundcloud.com/dj-barbara-thomaz/sets/who-is-barbara" target="_blank" rel="noopener">
-          <span class="n mn">02</span>
-          <span class="ti"><b>Who Is Bárbara</b><span>Playlist</span></span>
-          <span class="plat">SoundCloud</span>
-          <span class="go">Ouvir<span class="sq" aria-hidden="true"></span></span>
-        </a></li>
-        <li><a class="track" href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener">
-          <span class="n mn">03</span>
-          <span class="ti"><b>Canal Bárbara Thomaz</b><span>Sets e vídeos</span></span>
-          <span class="plat">YouTube</span>
-          <span class="go">Assistir<span class="sq" aria-hidden="true"></span></span>
-        </a></li>
-      </ul>
-      <div class="note"><b>Ref. música</b>Lista enxuta, sem capas gigantes — o que importa é o nome, o tipo de conteúdo e a plataforma. Nenhum player embutido carrega junto com a página. "Who Is Bárbara" segue como playlist até confirmarmos o que é.</div>
+      <div class="mgrid">
+        <a class="mtile" href="https://open.spotify.com/artist/5Luy0WFYQ2JGezy5EyTBnx" target="_blank" rel="noopener">
+          <img src="img/IMG_7330.jpg" alt="" aria-hidden="true" loading="lazy" width="1100" height="1648">
+          <span class="mt-top"><span class="n mn">01</span><span class="plat">Spotify</span></span>
+          <span class="mt-bot"><b>Bárbara Thomaz</b><span class="kind">Perfil de artista</span><span class="go">Ouvir<span class="sq" aria-hidden="true"></span></span></span>
+        </a>
+        <a class="mtile" href="https://soundcloud.com/dj-barbara-thomaz/sets/who-is-barbara" target="_blank" rel="noopener">
+          <img src="img/IMG_7351.jpg" alt="" aria-hidden="true" loading="lazy" width="768" height="1151" style="object-position:50% 15%">
+          <span class="mt-top"><span class="n mn">02</span><span class="plat">SoundCloud</span></span>
+          <span class="mt-bot"><b>Who Is Bárbara</b><span class="kind">Playlist</span><span class="go">Ouvir<span class="sq" aria-hidden="true"></span></span></span>
+        </a>
+        <a class="mtile" href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener">
+          <img src="img/IMG_7346.jpg" alt="" aria-hidden="true" loading="lazy" width="768" height="1151" style="object-position:50% 12%">
+          <span class="mt-top"><span class="n mn">03</span><span class="plat">YouTube</span></span>
+          <span class="mt-bot"><b>Canal Bárbara Thomaz</b><span class="kind">Sets e vídeos</span><span class="go">Assistir<span class="sq" aria-hidden="true"></span></span></span>
+        </a>
+      </div>
+      <div class="note"><b>Ref. música</b>Cada item virou um quadro com foto de estúdio no fundo, no mesmo estilo da galeria — no lugar da lista de texto ou de widgets incorporados (o site atual carrega o player do Spotify, um vídeo do YouTube e o widget do SoundCloud lado a lado, cada um com a cara da própria plataforma). Nenhum player de terceiro carrega aqui — o clique abre a plataforma. A foto de IMG_7346 (a que tinha ficado solta em "Sobre") entrou aqui. "Who Is Bárbara" segue como playlist até confirmarmos o que é.</div>
     </div>
   </section>
 
