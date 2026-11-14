@@ -128,13 +128,11 @@ section.panel{padding-block:clamp(48px,7vw,84px)}
 
 /* ---------- 03 SET EM DESTAQUE ---------- */
 .feature{display:grid;grid-template-columns:1.5fr 1fr;gap:0;margin-top:clamp(28px,4vw,44px)}
-.player{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:var(--ink-2);text-decoration:none}
-.player img{width:100%;height:100%;object-fit:cover;filter:grayscale(.7) brightness(.55);transition:transform 1s,filter .4s}
-.player:hover img{transform:scale(1.03);filter:grayscale(.3) brightness(.65)}
-.player::after{content:"";position:absolute;inset:0;z-index:1;background:color-mix(in srgb,var(--violet) 32%,transparent);mix-blend-mode:multiply;pointer-events:none;transition:opacity .4s}
-.player:hover::after{opacity:.6}
+.player{position:relative;display:block;min-height:280px;overflow:hidden;text-decoration:none;background:linear-gradient(135deg,color-mix(in srgb,var(--violet) 55%,var(--ink)),var(--ink-2) 72%)}
+.player::before{content:"";position:absolute;inset:0;background-image:radial-gradient(color-mix(in srgb,var(--paper) 10%,transparent) 1px,transparent 1px);background-size:22px 22px;opacity:.5}
 .player .tag{position:absolute;left:0;bottom:0;z-index:2;display:flex;justify-content:space-between;width:100%;padding:12px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
-.player .play{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.player .soon{position:absolute;top:14px;left:16px;z-index:2;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--violet-2);opacity:.85}
+.player .play{position:relative;z-index:2;height:100%;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
 .player .play i{width:46px;height:46px;border:1px solid var(--paper);border-radius:50%;display:grid;place-items:center;transition:background .3s,color .3s}
 .player:hover .play i{background:var(--paper);color:var(--ink)}
 .player .play svg{width:14px;height:14px;margin-left:2px}
@@ -356,8 +354,8 @@ body.notes .note{display:block}
     </div>
       <div class="feature">
         <a class="player" href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener" id="set-t">
-          <img src="img/IMG_7343.jpg" alt="" loading="lazy" width="1100" height="1648">
           <span class="play"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></i>Assistir no YouTube</span>
+          <span class="soon mn">Frame do vídeo em breve</span>
           <span class="tag mn"><span>B2B Lerock's × Bárbara Thomaz</span><span>YouTube</span></span>
         </a>
         <div class="feature-info">
@@ -373,7 +371,7 @@ body.notes .note{display:block}
           <p style="font-size:13px;color:var(--mute);line-height:1.6">Um registro ao vivo da pista. O link abre direto no YouTube — nada carrega junto com a página.</p>
         </div>
       </div>
-      <div class="gx"><div class="note"><b>Ref. set</b>O painel da direita ficava com um vão vazio no meio (a foto é alta, então a coluna de dados esticava junto) — agora esse espaço virou um destaque grande pra data, com botão direto pra falar sobre uma apresentação, em vez de ficar perdido. O player continua de ponta a ponta, sem voltar a flutuar como cartão solto. A foto é provisória — trocar pelo frame real do vídeo assim que tivermos. Se um set solo for aprovado, ele assume este lugar.</div></div>
+      <div class="gx"><div class="note"><b>Ref. set</b>Tirei a foto de estúdio que estava no lugar do vídeo — ela não era o vídeo, e usá-la ali passava a ideia errada. Agora é um fundo liso (gradiente + textura de pontos), com o aviso "frame do vídeo em breve", até termos a miniatura de verdade. O quadro também ficou bem menor: antes a altura seguia a largura da coluna (grande demais); agora as duas colunas (vídeo e dados) acompanham a mesma altura, sem vão vazio. Se um set solo for aprovado, ele assume este lugar.</div></div>
   </section>
 
   <!-- 05 GALERIA -->
