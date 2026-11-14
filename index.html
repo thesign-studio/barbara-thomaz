@@ -241,6 +241,7 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 .book-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(24px,4vw,56px);margin-top:clamp(36px,5.5vw,64px)}
 .book-grid .contact{margin-top:22px;max-width:260px}
 .book-grid .lead p#book-t{font-size:clamp(30px,4.4vw,52px);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;line-height:1.08;max-width:14ch;margin-bottom:6px}
+.book-grid .lead p#book-t .hl{color:var(--violet-2)}
 .book-grid .lead p:not(#book-t){max-width:20ch}
 .contact{display:grid;gap:0}
 .contact div{display:grid;gap:2px;padding:8px 0;border-bottom:1px solid var(--line)}
@@ -270,6 +271,9 @@ body.notes .note{display:block}
    roda de verdade (classe "js" no html), senão fica visível normalmente ---------- */
 html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:0}
 
+/* ---------- barra de progresso do scroll ---------- */
+#scrollbar{position:fixed;top:0;left:0;height:3px;width:0%;background:var(--violet-2);z-index:998;pointer-events:none}
+
 /* ---------- preloader rápido ---------- */
 #preloader{position:fixed;inset:0;z-index:999;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity .45s var(--ease),visibility .45s var(--ease)}
 #preloader img{height:34px;width:auto;opacity:0;animation:pre-in .6s var(--ease) .1s forwards}
@@ -286,6 +290,7 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
 </style>
 </head>
 <body>
+<div id="scrollbar" aria-hidden="true"></div>
 <div id="preloader" aria-hidden="true"><img src="img/Logo.png" alt=""><span class="mk"></span></div>
 <span id="topo" aria-hidden="true"></span>
 
@@ -439,7 +444,7 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
       <div class="sec-label"><span class="t mn">Bookings e press kit</span><span class="rule"></span><span class="mark" aria-hidden="true"></span></div>
       <div class="book-grid">
         <div class="lead">
-          <p id="book-t">Leve essa experiência para o seu evento.</p>
+          <p id="book-t">Leve essa <span class="hl">experiência</span> para o seu evento.</p>
           <p class="mn" style="font-size:12px;color:var(--mute);margin-top:16px;text-transform:uppercase;letter-spacing:.06em">Para bookings e informações sobre apresentações, entre em contato.</p>
           <div class="actions" style="margin-top:22px">
             <a class="btn btn--solid" href="https://wa.me/5519989005660" target="_blank" rel="noopener">
@@ -508,7 +513,10 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
     const start=Date.now();
     function hide(){
       const wait=Math.max(0,700-(Date.now()-start));
-      setTimeout(()=>{ pre.classList.add('is-done'); playHeroIntro(); setTimeout(()=>pre.remove(),480) },wait);
+      setTimeout(()=>{
+        pre.classList.add('is-done');
+        setTimeout(()=>{ pre.remove(); playHeroIntro() },480);
+      },wait);
     }
     if(document.readyState==='complete') hide();
     else window.addEventListener('load',hide);
@@ -553,6 +561,21 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
   } else {
     document.querySelectorAll('.mtile,.reveal').forEach(el=>el.classList.add('is-in'));
   }
+
+  // Barra de progresso do scroll + leve parallax nas fotos do hero
+  const bar=document.getElementById('scrollbar');
+  const heroImgs=[...document.querySelectorAll('.hgrid img')];
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ticking=false;
+  function onScroll(){
+    const h=document.documentElement;
+    const max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(h.scrollTop/max)*100:0)+'%';
+    if(!reduceMotion && h.scrollTop<900) heroImgs.forEach(img=>{img.style.transform=`scale(1.08) translateY(${h.scrollTop*0.06}px)`});
+    ticking=false;
+  }
+  window.addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(onScroll); ticking=true } },{passive:true});
+  onScroll();
 })();
 </script>
 </body>
