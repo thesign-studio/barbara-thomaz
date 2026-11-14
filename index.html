@@ -112,9 +112,8 @@ p{margin:0}
 @media (max-width:820px){.feature{grid-template-columns:1fr}}
 
 /* ---------- cabeçalhos de seção, colados (sem gap embaixo) ---------- */
-.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:18px;border-bottom:2px solid var(--paper);min-width:0}
-.sec-head .giant{font-size:clamp(24px,4.4vw,42px);min-width:0;flex:1 1 auto}
-.sec-head .eyebrow{flex:0 0 auto}
+.sec-head{display:flex;flex-direction:column;gap:clamp(10px,2vw,18px);padding-block:clamp(24px,5vw,40px);border-bottom:2px solid var(--paper);min-width:0}
+.sec-head .giant{font-size:clamp(46px,11.5vw,150px);min-width:0;width:100%}
 
 /* ---------- 03 sobre ---------- */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
@@ -157,7 +156,7 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 
 /* ---------- 06 bookings: faixa violeta cheia ---------- */
 .book{background:var(--violet);color:var(--ink)}
-.book .giant{font-size:clamp(34px,6.6vw,88px);color:var(--ink)}
+.book .giant{font-size:clamp(40px,9vw,128px);color:var(--ink)}
 .book-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,56px);align-items:end;padding-block:clamp(32px,6vw,64px)}
 .book-lead{font-size:clamp(16px,1.6vw,19px);max-width:46ch;color:color-mix(in srgb,var(--ink) 80%,transparent)}
 .book .btn--solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
@@ -250,8 +249,8 @@ body.notes .note{display:block}
   <!-- 02 SET EM DESTAQUE -->
   <section class="panel" id="set" aria-labelledby="set-t">
     <div class="gx sec-head">
-      <h2 id="set-t" class="giant">Entre no<br>universo sonoro.</h2>
       <p class="eyebrow">01 · Set em destaque</p>
+      <h2 id="set-t" class="giant">Entre no<br>universo sonoro.</h2>
     </div>
     <div class="feature">
       <a class="player" href="https://www.youtube.com/channel/UC15enO2mcWiVxrmDQAjMnCQ" target="_blank" rel="noopener">
@@ -279,6 +278,7 @@ body.notes .note{display:block}
       </figure>
       <div class="about-text">
         <p class="eyebrow">02 · Sobre a artista</p>
+        <h2 class="giant" style="font-size:clamp(34px,6.5vw,76px);color:var(--ink)">Energia.<br>Emoção.<br>Pista.</h2>
         <p class="first">Sou Bárbara Thomaz, e a música me faz sentir viva. Encontrei no Melodic Techno uma forma de unir energia, intensidade e emoção, e de compartilhar essa conexão com quem está na pista.</p>
         <p>Cada set é uma jornada para viver o presente, dançar com liberdade e se deixar levar pelo som. É essa experiência que quero dividir: música que aproxima, desperta sensações e cria momentos que ficam.</p>
         <div class="actions" style="margin-top:4px">
@@ -293,8 +293,8 @@ body.notes .note{display:block}
   <!-- 04 MÚSICA -->
   <section class="panel" id="musica" aria-labelledby="musica-t">
     <div class="gx sec-head">
-      <h2 id="musica-t" class="giant">Música<br>para sentir.</h2>
       <p class="eyebrow">03 · Música e sets</p>
+      <h2 id="musica-t" class="giant">Música<br>para sentir.</h2>
     </div>
     <ul class="gx tracks">
       <li>
@@ -322,8 +322,8 @@ body.notes .note{display:block}
   <!-- 05 GALERIA -->
   <section class="panel" id="galeria" aria-labelledby="galeria-t">
     <div class="gx sec-head">
-      <h2 id="galeria-t" class="giant" style="font-size:clamp(24px,4vw,38px)">Em cena.</h2>
       <p class="eyebrow">04 · Galeria</p>
+      <h2 id="galeria-t" class="giant">Em cena.</h2>
     </div>
     <div class="filmstrip" id="gal">
       <button aria-label="Ampliar foto 1 de 8"><img src="img/IMG_7490.jpg" alt="Bárbara de costas, conjunto de cetim dourado" loading="lazy" width="1100" height="1648"><span class="tag"><span>01</span><span>Estúdio</span></span></button>
