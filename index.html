@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bárbara Thomaz — Site</title>
+<script>document.documentElement.classList.add('js')</script>
 <link rel="icon" href="img/Logo.png">
 <meta name="description" content="Bárbara Thomaz, DJ de Melodic Techno — música, sets e bookings.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -265,6 +266,10 @@ body.notes .note{display:block}
 .mplayer__panel{order:-1;width:min(300px,calc(100vw - 96px));background:var(--ink-2);border:1px solid var(--line);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.45)}
 .mplayer__panel iframe{display:block;border:0;width:100%;height:352px}
 
+/* ---------- evita o "pisca" da entrada do hero: já nasce invisível só quando o JS
+   roda de verdade (classe "js" no html), senão fica visível normalmente ---------- */
+html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:0}
+
 /* ---------- preloader rápido ---------- */
 #preloader{position:fixed;inset:0;z-index:999;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity .45s var(--ease),visibility .45s var(--ease)}
 #preloader img{height:34px;width:auto;opacity:0;animation:pre-in .6s var(--ease) .1s forwards}
@@ -414,16 +419,16 @@ body.notes .note{display:block}
   <section class="panel" id="galeria" aria-labelledby="galeria-t" style="padding-top:0;padding-bottom:0">
     <div class="gx sec-label"><span class="t mn" id="galeria-t">Em cena — galeria</span><span class="rule"></span><span class="mark" aria-hidden="true"></span></div>
     <div class="gal2" id="gal">
-      <a href="#" aria-label="Ampliar foto 1 de 10"><span class="n mn">01</span><img src="img/IMG_7349.jpg" alt="Bárbara Thomaz de jaqueta de couro preta e óculos escuros"><span class="cap"><b>Postura de estúdio</b><span>Preto · Retrato</span></span></a>
-      <a href="#" aria-label="Ampliar foto 2 de 10"><span class="n mn">02</span><img src="img/IMG_7343.jpg" alt="Bárbara de macacão metálico prateado, óculos escuros"><span class="cap"><b>Metalizado</b><span>Prateado · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 3 de 10"><span class="n mn">03</span><img src="img/IMG_7341.jpg" alt="Bárbara de vestido longo preto, mãos na cabeça" style="object-position:50% 10%"><span class="cap"><b>Vestido longo</b><span>Preto · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 4 de 10"><span class="n mn">04</span><img src="img/IMG_7330.jpg" alt="Bárbara de vestido metálico prateado"><span class="cap"><b>Vestido metálico</b><span>Prateado · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 5 de 10"><span class="n mn">05</span><img src="img/IMG_7345.jpg" alt="Bárbara de jaqueta de couro e óculos vermelhos"><span class="cap"><b>Jaqueta de couro</b><span>Preto · Retrato</span></span></a>
-      <a href="#" aria-label="Ampliar foto 6 de 10"><span class="n mn">06</span><img src="img/IMG_7346.jpg" alt="Bárbara de jaqueta de couro, ajustando os óculos escuros" style="object-position:50% 12%"><span class="cap"><b>Ajustando os óculos</b><span>Preto · Retrato</span></span></a>
-      <a href="#" aria-label="Ampliar foto 7 de 10"><span class="n mn">07</span><img src="img/IMG_7350.jpg" alt="Bárbara de blazer preto e óculos vermelhos, braços cruzados"><span class="cap"><b>Braços cruzados</b><span>Preto · Retrato</span></span></a>
-      <a href="#" aria-label="Ampliar foto 8 de 10"><span class="n mn">08</span><img src="img/IMG_7351.jpg" alt="Bárbara de vestido preto, mãos na cintura" style="object-position:50% 15%"><span class="cap"><b>Mãos na cintura</b><span>Preto · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 9 de 10"><span class="n mn">09</span><img src="img/IMG_7359.jpg" alt="Bárbara de vestido preto, mãos na cintura, outro ângulo" style="object-position:50% 12%"><span class="cap"><b>Outro ângulo</b><span>Preto · Produção</span></span></a>
-      <a href="#" aria-label="Ampliar foto 10 de 10"><span class="n mn">10</span><img src="img/IMG_7344.jpg" alt="Bárbara de vestido preto"><span class="cap"><b>Vestido preto</b><span>Preto · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 1 de 10"><span class="n mn">01</span><img src="img/IMG_7349.jpg" alt="Bárbara Thomaz de jaqueta de couro preta e óculos escuros"><span class="cap"><b>Take 01</b><span>Preto · Retrato</span></span></a>
+      <a href="#" aria-label="Ampliar foto 2 de 10"><span class="n mn">02</span><img src="img/IMG_7343.jpg" alt="Bárbara de macacão metálico prateado, óculos escuros"><span class="cap"><b>Take 02</b><span>Prateado · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 3 de 10"><span class="n mn">03</span><img src="img/IMG_7341.jpg" alt="Bárbara de vestido longo preto, mãos na cabeça" style="object-position:50% 10%"><span class="cap"><b>Take 03</b><span>Preto · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 4 de 10"><span class="n mn">04</span><img src="img/IMG_7330.jpg" alt="Bárbara de vestido metálico prateado"><span class="cap"><b>Take 04</b><span>Prateado · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 5 de 10"><span class="n mn">05</span><img src="img/IMG_7345.jpg" alt="Bárbara de jaqueta de couro e óculos vermelhos"><span class="cap"><b>Take 05</b><span>Preto · Retrato</span></span></a>
+      <a href="#" aria-label="Ampliar foto 6 de 10"><span class="n mn">06</span><img src="img/IMG_7346.jpg" alt="Bárbara de jaqueta de couro, ajustando os óculos escuros" style="object-position:50% 12%"><span class="cap"><b>Take 06</b><span>Preto · Retrato</span></span></a>
+      <a href="#" aria-label="Ampliar foto 7 de 10"><span class="n mn">07</span><img src="img/IMG_7350.jpg" alt="Bárbara de blazer preto e óculos vermelhos, braços cruzados"><span class="cap"><b>Take 07</b><span>Preto · Retrato</span></span></a>
+      <a href="#" aria-label="Ampliar foto 8 de 10"><span class="n mn">08</span><img src="img/IMG_7351.jpg" alt="Bárbara de vestido preto, mãos na cintura" style="object-position:50% 15%"><span class="cap"><b>Take 08</b><span>Preto · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 9 de 10"><span class="n mn">09</span><img src="img/IMG_7359.jpg" alt="Bárbara de vestido preto, mãos na cintura, outro ângulo" style="object-position:50% 12%"><span class="cap"><b>Take 09</b><span>Preto · Produção</span></span></a>
+      <a href="#" aria-label="Ampliar foto 10 de 10"><span class="n mn">10</span><img src="img/IMG_7344.jpg" alt="Bárbara de vestido preto"><span class="cap"><b>Take 10</b><span>Preto · Produção</span></span></a>
     </div>
     <div class="gx"><div class="note"><b>Ref. galeria · v3</b>A grade tipo alvenaria não ficou boa — tirei ela. Agora é uma sanfona de ponta a ponta de verdade (sem container centralizado): as fotos ficam lado a lado, estreitas, com uma linha de violeta sólido entre elas; passar o mouse expande a foto e revela o nome, o resto encolhe. No celular (sem hover) vira uma fita que rola com parada em cada foto, já em cor plena. Clicar abre a mesma ampliação de sempre. Categoria por cor do look (preto/dourado/prateado) e por tipo de enquadramento (retrato/produção) — os dois lidos direto da própria foto, nada inventado. Tirei as duas fotos que já apareciam na abertura (de costas e cetim dourado de frente) — aqui fica só o que ainda não foi mostrado.</div></div>
   </section>
@@ -483,15 +488,17 @@ body.notes .note{display:block}
   // Entrada da abertura, GSAP. Se o script não carregar, os elementos já nascem visíveis (gsap.from
   // só esconde quando o tween é criado) — nenhum conteúdo fica escondido à espera de JS.
   function playHeroIntro(){
-    if (!window.gsap) return;
+    const els=document.querySelectorAll('.hgrid figure,.hero-foot .sign,.hero-foot .list');
+    if (!window.gsap){ els.forEach(el=>el.style.opacity=1); return }
     const mm = gsap.matchMedia();
     mm.add('(prefers-reduced-motion: no-preference)', () => {
       const tl = gsap.timeline({defaults:{ease:'power3.out',duration:.62}});
-      tl.from('.hgrid figure', {autoAlpha:0, y:16, stagger:.08})
-        .from('.hero-foot .sign', {autoAlpha:0, y:16}, '-=.3')
-        .from('.hero-foot .list', {autoAlpha:0, y:16}, '-=.45');
+      tl.fromTo('.hgrid figure', {autoAlpha:0, y:16}, {autoAlpha:1, y:0, stagger:.08})
+        .fromTo('.hero-foot .sign', {autoAlpha:0, y:16}, {autoAlpha:1, y:0}, '-=.3')
+        .fromTo('.hero-foot .list', {autoAlpha:0, y:16}, {autoAlpha:1, y:0}, '-=.45');
       return () => tl.kill();
     });
+    mm.add('(prefers-reduced-motion: reduce)', () => { els.forEach(el=>el.style.opacity=1) });
   }
 
   // Preloader: some rápido assim que a página carrega (com um mínimo pra não piscar),
