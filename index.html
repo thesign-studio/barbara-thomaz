@@ -25,6 +25,11 @@
   --body:"Instrument Sans","Segoe UI",Helvetica,Arial,sans-serif;
   --gut:max(18px,env(safe-area-inset-left,0px));
   --gut-r:max(18px,env(safe-area-inset-right,0px));
+  /* personalidade de movimento: Premium — uma curva, três durações, sem overshoot */
+  --ease:cubic-bezier(.4,0,.2,1);
+  --dur-q:160ms;   /* hover, feedback imediato */
+  --dur-s:420ms;   /* entrada de elementos, troca de estado */
+  --dur-l:620ms;   /* zoom de foto, revelação dramática */
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -50,7 +55,9 @@ p{margin:0}
 .sec-label .mark{width:6px;height:6px;background:var(--violet-2);flex:none}
 
 /* ---------- botões ---------- */
-.btn{display:inline-flex;align-items:center;gap:.7em;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:13px 20px;border:1px solid var(--paper);min-height:44px;transition:background .25s,color .25s}
+.btn{display:inline-flex;align-items:center;gap:.7em;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:13px 20px;border:1px solid var(--paper);min-height:44px;transition:background var(--dur-q) var(--ease),color var(--dur-q) var(--ease),border-color var(--dur-q) var(--ease),transform var(--dur-q) var(--ease)}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(0) scale(.97);transition-duration:80ms}
 .btn--solid{background:var(--paper);color:var(--ink)}
 .btn--solid:hover{background:var(--violet-2);border-color:var(--violet-2);color:var(--ink)}
 .btn--line:hover{background:color-mix(in srgb,var(--paper) 8%,transparent)}
@@ -63,7 +70,7 @@ p{margin:0}
 .top .brand img{height:16px;width:auto;margin-bottom:8px}
 .top .brand p{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
 .top nav{display:flex;align-items:center;gap:22px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
-.top nav a{text-decoration:none;color:var(--paper);opacity:.75;transition:opacity .2s}
+.top nav a{text-decoration:none;color:var(--paper);opacity:.75;transition:opacity var(--dur-q) var(--ease)}
 .top nav a:hover{opacity:1}
 .top .status{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);text-align:right;white-space:nowrap}
 .toggle{all:unset;display:flex;gap:4px;cursor:pointer;align-items:center}
@@ -74,7 +81,13 @@ p{margin:0}
 /* ---------- 01 HERO: grade de 3 fotos desiguais ---------- */
 .hero{position:relative}
 .hgrid{display:grid;grid-template-columns:1.15fr .85fr 1fr;height:clamp(460px,88vh,860px)}
-.hgrid figure{margin:0;position:relative;overflow:hidden;background:#3a3a3c}
+@keyframes heroIn{from{opacity:.001;transform:translateY(16px)}to{opacity:1;transform:none}}
+.hgrid figure{margin:0;position:relative;overflow:hidden;background:#3a3a3c;animation:heroIn var(--dur-l) var(--ease) both}
+.hgrid .c1{animation-delay:0ms}
+.hgrid .c2{animation-delay:80ms}
+.hgrid .c3{animation-delay:160ms}
+.hero-foot .sign{animation:heroIn var(--dur-l) var(--ease) 260ms both}
+.hero-foot .list{animation:heroIn var(--dur-l) var(--ease) 340ms both}
 .hgrid figure::after{content:"";position:absolute;inset:0;background:color-mix(in srgb,var(--violet) 24%,transparent);mix-blend-mode:multiply;pointer-events:none}
 .hgrid img{width:100%;height:100%;object-fit:cover}
 .hgrid .c2 img{object-position:50% 20%;filter:saturate(.3) contrast(1.05)}
@@ -85,7 +98,7 @@ p{margin:0}
 .hero-divider .ticks{position:absolute;inset:0;display:flex;justify-content:space-between;list-style:none;margin:0;padding:0}
 .hero-divider .ticks li{position:relative;display:flex;flex-direction:column;align-items:center}
 .hero-divider .ticks li::before{content:"";width:1px;height:8px;background:color-mix(in srgb,var(--paper) 55%,transparent);position:absolute;top:-4px}
-.hero-divider .ticks a{text-decoration:none;position:absolute;top:10px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--paper);opacity:.7;white-space:nowrap;transition:opacity .2s}
+.hero-divider .ticks a{text-decoration:none;position:absolute;top:10px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--paper);opacity:.7;white-space:nowrap;transition:opacity var(--dur-q) var(--ease)}
 .hero-divider .ticks a:hover{opacity:1}
 .hero-divider .end{width:6px;height:6px;background:var(--violet-2);margin-left:16px;flex:none}
 @media (max-width:640px){.hero-divider .ticks a{display:none}}
@@ -133,7 +146,8 @@ section.panel{padding-block:clamp(48px,7vw,84px)}
 .player .tag{position:absolute;left:0;bottom:0;z-index:2;display:flex;justify-content:space-between;width:100%;padding:12px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
 .player .soon{position:absolute;top:14px;left:16px;z-index:2;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--violet-2);opacity:.85}
 .player .play{position:relative;z-index:2;height:100%;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
-.player .play i{width:46px;height:46px;border:1px solid var(--paper);border-radius:50%;display:grid;place-items:center;transition:background .3s,color .3s}
+.player .play i{width:46px;height:46px;border:1px solid var(--paper);border-radius:50%;display:grid;place-items:center;transition:background var(--dur-q) var(--ease),color var(--dur-q) var(--ease),transform var(--dur-q) var(--ease)}
+.player:hover .play i{transform:scale(1.07)}
 .player:hover .play i{background:var(--paper);color:var(--ink)}
 .player .play svg{width:14px;height:14px;margin-left:2px}
 .feature-info{background:var(--ink-2);padding:clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:24px}
@@ -152,7 +166,7 @@ section.panel{padding-block:clamp(48px,7vw,84px)}
 .fgrid{display:grid;grid-template-columns:repeat(12,1fr);margin-top:clamp(24px,4vw,40px)}
 .fgrid a{all:unset;cursor:zoom-in;position:relative;overflow:hidden;background:var(--ink-2);display:block}
 .fgrid a:focus-visible{outline:1.5px solid var(--violet-2);outline-offset:-3px}
-.fgrid img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15);transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .4s}
+.fgrid img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15);transition:transform var(--dur-l) var(--ease),filter var(--dur-s) var(--ease)}
 .fgrid a:hover img{transform:scale(1.045);filter:grayscale(0)}
 .fgrid .tag{position:absolute;left:0;bottom:0;padding:10px 12px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);width:100%}
 .f1{grid-column:span 5;aspect-ratio:3/4}
@@ -176,9 +190,9 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 .mgrid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(24px,4vw,40px)}
 .mtile{all:unset;cursor:pointer;position:relative;display:block;aspect-ratio:3/4;overflow:hidden;background:var(--ink-2)}
 .mtile:focus-visible{outline:1.5px solid var(--violet-2);outline-offset:-3px}
-.mtile img{width:100%;height:100%;object-fit:cover;filter:grayscale(.5) brightness(.55) contrast(1.05);transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .4s}
+.mtile img{width:100%;height:100%;object-fit:cover;filter:grayscale(.5) brightness(.55) contrast(1.05);transition:transform var(--dur-l) var(--ease),filter var(--dur-s) var(--ease)}
 .mtile:hover img{transform:scale(1.045);filter:grayscale(.1) brightness(.68)}
-.mtile::before{content:"";position:absolute;inset:0;background:color-mix(in srgb,var(--violet) 30%,transparent);mix-blend-mode:multiply;pointer-events:none;transition:opacity .4s}
+.mtile::before{content:"";position:absolute;inset:0;background:color-mix(in srgb,var(--violet) 30%,transparent);mix-blend-mode:multiply;pointer-events:none;transition:opacity var(--dur-s) var(--ease)}
 .mtile:hover::before{opacity:.5}
 .mtile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,.05) 55%)}
 .mtile .mt-top{position:absolute;top:0;left:0;right:0;z-index:2;display:flex;justify-content:space-between;padding:14px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
@@ -193,13 +207,13 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 
 /* ---------- 05 GALERIA: sanfona de ponta a ponta, fundo violeta entre as fotos ---------- */
 .gal2{position:relative;display:flex;gap:4px;width:100%;height:clamp(360px,62vh,620px);background:var(--violet);overflow:hidden}
-.gal2 a{position:relative;flex:1 1 0;min-width:0;overflow:hidden;display:block;text-decoration:none;transition:flex-grow .6s cubic-bezier(.2,.8,.2,1)}
-.gal2 a img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) brightness(.68) saturate(.85);mix-blend-mode:luminosity;transition:filter .5s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.gal2 a{position:relative;flex:1 1 0;min-width:0;overflow:hidden;display:block;text-decoration:none;transition:flex-grow var(--dur-l) var(--ease)}
+.gal2 a img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) brightness(.68) saturate(.85);mix-blend-mode:luminosity;transition:filter var(--dur-s) var(--ease),transform var(--dur-l) var(--ease)}
 .gal2 a::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75),transparent 48%);opacity:0;transition:opacity .4s}
-.gal2 a .cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;opacity:0;transform:translateY(10px);transition:opacity .4s,transform .4s;white-space:nowrap;overflow:hidden}
+.gal2 a .cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;opacity:0;transform:translateY(10px);transition:opacity var(--dur-s) var(--ease) 70ms,transform var(--dur-s) var(--ease) 70ms;white-space:nowrap;overflow:hidden}
 .gal2 a .cap b{display:block;font-family:var(--body);font-weight:600;font-size:19px;color:#fff}
 .gal2 a .cap span{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.72)}
-.gal2 a .n{position:absolute;top:14px;left:14px;z-index:2;font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.55);transition:opacity .3s}
+.gal2 a .n{position:absolute;top:14px;left:14px;z-index:2;font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.55);transition:opacity var(--dur-q) var(--ease)}
 @media (hover:hover) and (pointer:fine){
   .gal2 a:hover{flex-grow:6}
   .gal2 a:hover img{filter:none;transform:scale(1.02)}
@@ -221,7 +235,7 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 .contact dt{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
 .contact dd{margin:0;font-size:16px;font-family:var(--mono);user-select:all}
 .social-list{font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;display:grid;gap:10px;align-content:start}
-.social-list a{text-decoration:none;display:flex;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid var(--line);color:var(--paper);opacity:.8;transition:opacity .2s}
+.social-list a{text-decoration:none;display:flex;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid var(--line);color:var(--paper);opacity:.8;transition:opacity var(--dur-q) var(--ease)}
 .social-list a:hover{opacity:1}
 @media (max-width:860px){.book-grid{grid-template-columns:1fr}}
 
