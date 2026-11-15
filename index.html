@@ -257,7 +257,8 @@ dialog img{max-height:82vh;width:auto;margin-inline:auto}
 /* ---------- rodapé ---------- */
 footer{border-top:1px solid var(--line);padding-block:18px calc(28px + env(safe-area-inset-bottom,0px))}
 footer .row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
-footer img{height:14px;width:auto;opacity:.8}
+footer img{height:14px;width:auto;opacity:.8;transition:opacity var(--dur-q) var(--ease)}
+footer a:hover img{opacity:1}
 
 /* ---------- mini player: embed do Spotify abrindo do lado da aba "Ouvir" ---------- */
 .mplayer__panel{order:-1;width:min(300px,calc(100vw - 96px));background:var(--ink-2);border:1px solid var(--line);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.45)}
@@ -456,7 +457,7 @@ html.js .hgrid figure,html.js .hero-foot .sign,html.js .hero-foot .list{opacity:
 
 <footer>
   <div class="gx row">
-    <img src="img/Logo.png" alt="Bárbara Thomaz">
+    <a href="#topo" aria-label="Voltar ao topo"><img src="img/Logo.png" alt="Bárbara Thomaz"></a>
     <span>© 2026 Bárbara Thomaz</span>
     <span>Site por The Sign</span>
   </div>
